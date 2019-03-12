@@ -1,0 +1,692 @@
+@font-face {
+	font-family: PromtImperialBold;
+	src: url(../fonts/PromtImperialBold.ttf);
+}
+
+@font-face {
+	font-family: PromtImperial;
+	src: url(../fonts/PromtImperial.ttf);
+}
+
+$gray_color: #7b7b7b;
+$green_color: #1c916a;
+$orange_color: #ff4e00;
+$gray_color_h1: #606060;
+$font: 'PromtImperial';
+$fontBold: 'PromtImperialBold';
+$road_info_height: 100%;
+$margin: 25vh;
+$margin_h1: 15vh;
+$medium_margin_h1: 10vh;
+$medium_margin: 20vh;
+
+.st0_map{fill-rule:evenodd;clip-rule:evenodd;fill:#8E9093;}
+.st1_map{fill:none;stroke:#929498;stroke-width:0.1814;stroke-miterlimit:22.9256;}
+.st2_map{fill:none;stroke:#929498;stroke-width:0.1971;stroke-miterlimit:22.9256;}
+.st3_map{fill-rule:evenodd;clip-rule:evenodd;fill:#8F9093;}
+.st4_map{fill:none;stroke:#9D9DA0;stroke-width:0.216;stroke-miterlimit:22.9256;}
+.st5_map{fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
+.st6_map{fill-rule:evenodd;clip-rule:evenodd;fill:#E2E2E4;}
+.st7_map{fill-rule:evenodd;clip-rule:evenodd;fill:#C7C8CA;}
+.st8_map{fill:none;stroke:#929498;stroke-width:0.216;stroke-miterlimit:22.9256;}
+.st9_map{fill-rule:evenodd;clip-rule:evenodd;fill:#969E9F;}
+.st10_map{fill:none;stroke:#A6A7A9;stroke-width:0.216;stroke-miterlimit:22.9256;}
+.st11_map{fill:none;stroke:#A6A7A9;stroke-width:6.240000e-002;stroke-miterlimit:22.9256;}
+.st12_map{fill:#9D9DA0;}
+.st13_map{fill-rule:evenodd;clip-rule:evenodd;fill:#9D9DA0;}
+.st14_map{fill:none;stroke:#9D9DA0;stroke-width:0.1071;stroke-miterlimit:22.9256;}
+.st15_map{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#555759;stroke-width:5.000000e-002;stroke-miterlimit:10;}
+.st16_map{fill:none;stroke:#9D9DA0;stroke-width:0.4221;stroke-linejoin:round;stroke-miterlimit:22.9256;}
+.st17_map{fill:none;stroke:#FFFFFF;stroke-width:0.5;stroke-miterlimit:22.9256;}
+.st18_map{fill:#5D5E60;}
+.st19_map{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:$orange_color;stroke-width:0.25;stroke-miterlimit:10;}
+.st19_map:hover{stroke-width:.5; cursor: pointer}
+.opennedRoadMap{stroke-width:.5;}
+.st20_map{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#5D5E60;stroke-width:5.000000e-002;stroke-miterlimit:10;}
+
+body *{
+	//font-family: $font;
+}
+
+.carTextContainer h1 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.overflow_body{
+	height: 100vh;
+	overflow: hidden;
+}
+
+#main_block{
+    width: 100%;
+    height: 100vh;
+    background: url(../img/main.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: fixed;
+    z-index: 100;
+    opacity: 1;
+    transition: opacity 5s 3s ease;
+}
+
+header{
+	background-color: white;
+	position: fixed;
+	width: 100%;
+	z-index: 100;
+}
+
+#page_content{
+	opacity: 0;
+	transition: opacity 3s 1s ease;
+}
+
+.container ul li{
+	text-align: center;
+	color: $gray_color;
+	font-size: 16px;
+	border-right: 1px solid $gray_color;
+}
+
+.container ul li:hover .nav-link{
+	color: $orange_color !important;
+}
+
+.container ul li:last-of-type{border-right: none;}
+
+.container ul li .nav-link{
+	padding-top: 0;
+	padding-bottom: 0;
+	text-transform: uppercase;
+}
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    border: none;
+    border-radius: 0;
+    padding: 28px 0;
+    width: 100%;
+    margin-top: -5px;
+}
+
+.dropdown-menu .dropdown-item{
+	margin-bottom: 10px;
+	color: $gray_color;
+	white-space: normal;
+}
+
+.dropdown-menu .dropdown-item:last-of-type{
+	margin-bottom: 0px;
+}
+
+#map{
+	height: 100vh;
+	width: 100%;
+	overflow: hidden;
+}
+
+#controls{
+	position: absolute;
+    z-index: 10;
+    bottom: 3vh;
+    width: 5vh;
+    right: 3vh;
+}
+
+#roads{
+	padding: 0 0 $margin;
+}
+
+#roads .road{
+	height: 67px;
+    border: 1px solid $green_color;
+    border-radius: 15px;
+    margin: 0 10px;
+    padding: 5px;
+    cursor: pointer
+}
+
+#roads .road:hover{
+	border: 1px solid $orange_color;
+}
+
+#roads .road:hover .roadText{
+	background-color: $orange_color;
+}
+
+#roads .opennedRoad{
+	border: 1px solid $orange_color;
+}
+
+#roads .opennedRoad .roadText{
+	background-color: $orange_color !important;
+}
+
+#roads .road .roadText{
+	border-radius: 10px;
+	background-color: $green_color;
+	height: 100%;
+	color: white;
+	font-size: 35px;
+	text-align: center;
+}
+
+#road_info{
+	max-height: 0;
+	height: auto;
+	opacity: 0;
+	overflow: hidden;
+	margin-top: $margin;
+	transition: all 1s ease;
+}
+
+#road_info.openRoad{
+	max-height: calc(100vh - 40px);
+	opacity: 1;
+	margin-top: 0px;
+	padding-top: 40px;
+	margin-bottom: $margin;
+}
+
+.road_info_inner{
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	height: calc(90vh - 100px);
+}
+
+.svg_path_container{
+	height: 33%;
+}
+
+.image_container{
+	position: relative;
+    height: 100%;
+    width: auto;
+}
+
+.image_container .image_line {
+    border: 1px solid $orange_color;
+    height: 0px;
+    top: 0px;
+    position: absolute;
+    z-index: -1;
+}
+
+.image_container .image_sircle{
+    border: 5px solid $orange_color;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    background-color: white;
+}
+
+.last_part .image_container:before {
+
+}
+
+.last_part .image_container:after {
+
+}
+
+.info_container{
+	display: flex;
+    object-fit: contain;
+}
+
+.info_container img{
+	height: $road_info_height;
+    margin-right: 40px;
+    margin-left: 60px;
+    object-fit: contain;
+    align-self: baseline;
+}
+
+.info_container:nth-of-type(1) img{
+	margin-left: 0px;
+}
+
+.first_part{
+	display: flex;
+	margin-top: 30px;
+	height: 33%;
+}
+
+.info_text_h1_container{
+	max-width: 250px;
+}
+
+.road_title_container{
+	width: 215px;
+    margin-top: -39px;
+    margin-left: 2px;
+}
+
+.first_title{
+	font-size: 40px;
+}
+
+.road_info_inner h1{
+	padding: 5px;
+    margin-bottom: 5px;
+    color: white;
+    background-color: $orange_color;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.info_text_container{
+	height: $road_info_height;
+    min-width: 400px;
+}
+
+.close_btn{
+	float: right;
+    height: 3vh;
+    margin: 2vh;
+    cursor: pointer;
+    z-index: 3;
+    position: relative;
+}
+
+.dropdown-item.active, .dropdown-item:active{
+	background-color: #fbfbfb;
+}
+
+#progress{
+	margin-bottom: $margin;
+}
+
+#history .row p{
+	margin-bottom: 20px;
+}
+
+.carTextContainer{
+	justify-content: center;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.imgTextContainer {
+    display: flex;
+}
+
+.imgTextContainer img{
+	width: 40vw;
+}
+
+.carTextContainer p, .carTextContainer h1{
+	padding-left: 9vw;
+    max-width: 40vw;
+}
+
+.imgTextContainer:nth-child(2n) p{
+	padding-right: 2vw;
+}
+
+.imgTextContainer:nth-child(2n)  h1{
+	padding-right: 2vw;
+}
+
+.imgTextContainer:nth-child(2n){
+	margin-top: -7vh;
+}
+
+.imgTextContainer:nth-child(3){
+	margin-top: -27vh;
+}
+
+.imgTextContainer:nth-child(5){
+	margin-top: -7vh;
+}
+
+.imgTextContainer:nth-child(8){
+	margin-top: 70px;
+}
+
+.imgTextContainer:nth-child(10){
+	margin-top: 70px;
+}
+
+.imgTextContainer:nth-child(2n) img{
+	width: 50vw;
+}
+
+.imgTextContainer div{
+	width: 50vw;
+	object-fit: contain;
+}
+
+.history-container{
+	margin-bottom: $margin;
+}
+
+#svg{
+	position: absolute;
+	overflow: visible;
+}
+
+.h1_container{
+	position: relative;
+	text-align:center;
+	margin-bottom: $margin_h1;
+}
+
+.h1_container h1{
+	margin: auto;
+	border-right: 1px solid $orange_color;
+	border-left: 1px solid $orange_color;
+	padding: 0 40px;
+	color: $orange_color;
+	width: auto;
+    display:inline-block;
+    font-size: 36px;
+}
+
+.progress-col-1 span {
+    color: $gray_color_h1;
+}
+
+.progress-col-1 p {
+    background-color: $orange_color;
+    color: white;
+    padding: 0 6px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.progress-col-2 span {
+    color: $gray_color_h1;
+    text-align: center;
+}
+
+.progress-col-2 .p_container_progress{
+    width: 172px;
+    float: right;
+    margin-top: -10px;
+    z-index: 20;
+    position: relative;
+    margin-bottom: 35px;
+}
+
+.progress-col-2 p {
+    background-color: $orange_color;
+    color: white;
+    padding: 0 6px;
+    margin-bottom: 5px;
+}
+
+.progress-col-2 p:nth-of-type(1) {
+	width: 31px;
+    float: right;
+}
+
+.progress-col-2 p:nth-of-type(2) {
+	clear: both;
+}
+
+.progress-col-3 span {
+    color: white;
+}
+
+.progress-col-3 .span {
+    color: white;
+    background-color: $orange_color;
+    padding: 0 20px;
+    width: calc(100% - 118px);
+    float: left;
+}
+
+.progress-col-3 .p_container_progress{
+	width: 118px;
+    float: right;
+    z-index: 20;
+    position: relative;
+}
+
+.progress-col-3 p {
+    color: $gray_color_h1;
+    padding: 0 6px;
+}
+
+.progress-col-4 .span{
+	width: calc( 100% - 155px);
+	padding: 0 20px;
+    float: left;
+    background-color: $gray_color_h1;
+}
+
+.progress-col-4 span {
+    color: white;
+}
+
+.progress-col-4 h2{
+	float: left;
+    width: 155px;
+    padding-left: 10px;
+    font-size: 68px;
+    margin-top: -34px;
+    color: $gray_color_h1;
+}
+
+.progress-col-4 p{
+	float: left;
+    width: 145px;
+    padding-left: 10px;
+    color: $gray_color_h1;
+    margin-top: -5px;
+}
+
+.progress-col-5 span {
+    color: $orange_color;
+    padding: 0 20px;
+    text-align: right;
+}
+
+.progress-col-5 p {
+    background-color: $gray_color_h1;
+    color: white;
+    padding: 0 6px;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.progress-col-5 .col-6:nth-of-type(1) p{
+	background-color: $orange_color;
+    color: white;
+    padding: 0 6px;
+    float: right;
+    margin-top: 29px;
+}
+
+.progress-col-5 .col-6:nth-of-type(2){
+	margin-left: -13px;
+}
+
+footer{
+	padding: 20px 0;
+	margin-top: 100px;
+	background-color: #c8c8c8;
+	color: white;
+	height: 60px;
+}
+
+footer a, footer p{
+	float: left;
+}
+
+footer img{
+    margin-right: 10px;
+    height: 20px;
+}
+
+.footer_text_left{
+	margin-left: 30px;
+}
+
+.footer_text_right{
+	float: right;
+}
+
+@media (min-width: 1200px){
+	.container {
+	    max-width: 1180px !important;
+	}
+}
+
+@media (max-width: 1200px){
+	.navbar-brand img{
+		height: 35px !important;
+	}
+	.container {
+	    max-width: 95%;
+	}
+	.container ul li {
+	    font-size: 14px;
+	}
+	.carTextContainer p, .carTextContainer h1 {
+	    padding-left: 11vw;
+	}
+	.imgTextContainer:nth-child(2n) p {
+	    padding-left: 5vw;
+	}
+	.imgTextContainer:nth-child(2n) h1 {
+	    padding-left: 5vw;
+	}
+	.road_title_container {
+	    margin-top: -80px;
+	}
+	#roads{
+		padding: 0 0 $medium_margin;
+	}
+	#road_info{
+		margin-top: $medium_margin;
+	}
+	#road_info.openRoad{
+		margin-bottom: $medium_margin;
+	}
+	#progress{
+		margin-bottom: $medium_margin;
+	}
+	.history-container{
+		margin-bottom: $medium_margin;
+	}
+	.h1_container{
+		margin-bottom: $medium_margin_h1;
+	}
+
+}
+
+@media (max-width: 1160px){
+	.container ul li {
+	    font-size: 14px;
+	}
+}
+
+@media (max-width: 1100px){
+	#mapSVG{
+		width: 100%; height: 100%;
+	}
+	.navbar-brand img {
+	    height: 30px !important;
+	}
+	.container ul li {
+	    font-size: 12px;
+	}
+}
+
+@media (max-width: 992px){
+	.container {
+	    max-width: 90%;
+	}
+	.col-sm {flex-basis: auto;}
+	.container ul li{
+		text-align: left;
+		border-right: none;
+	}
+	.navbar img{
+		height: 40px !important;
+	}
+	.imgTextContainer:nth-child(3) {
+	    margin-top: -13vh; 
+	}
+	.imgTextContainer:nth-child(2n) {
+	    margin-top: 0vh;
+	}
+	.imgTextContainer:nth-child(6) {
+	    margin-top: -9vh; 
+	}
+	.imgTextContainer:nth-child(10) {
+	    margin-top: 70px;
+	}
+	.history-container .col{
+		column-count: 1 !important;
+	}
+
+}
+
+@media (max-width: 900px){
+	.progress-col-3 .span{
+		width: 100%;
+	}
+}
+
+@media (max-width: 800px){
+	#svg{display: none;}
+	.imgTextContainer {
+	    margin-top: 10vh !important;
+	}
+	.imgTextContainer div {
+	    width: 100%;
+	}
+	.imgTextContainer img {
+	    width: 70vw;
+	}
+	.imgTextContainer {
+	    flex-direction: column;
+	}
+	.carTextContainer p, .carTextContainer h1 {
+	    max-width: 90vw;
+	}
+	.carTextContainer h1 {
+	    margin-top: 50px;
+	}
+	.imgTextContainer:nth-child(2n) img {
+	    width: 70vw;
+	    float: right;
+	}
+	.carTextContainer h1{
+	    padding-left: 11vw !important;
+	}
+	.imgTextContainer:nth-child(2n) p {
+	    padding-left: 11vw !important;
+	}
+	.carTextContainer{
+		order: 2;
+	}
+	.leftSide{
+		order: 1;
+	}
+}
+
+
+@media (max-width: 750px){
+	.road{
+		margin-bottom: 20px !important;
+	}
+	.roadText{
+		padding: 0 20px;
+	}
+	.h1_container h1{
+		font-size: 30px;
+	}
+}
