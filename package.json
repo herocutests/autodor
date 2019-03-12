@@ -4,6 +4,6 @@
   "description": "text",
   "license": "MIT",
   "repository": "https://github.com/herocutests/autodor.git",
-  "main": "index.html",
+  "main": "index.php",
   "stack": "heroku-18"
 }
