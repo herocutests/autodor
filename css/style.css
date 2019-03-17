@@ -4,133 +4,6 @@
 @font-face {
   font-family: PromtImperial;
   src: url(../fonts/PromtImperial.ttf); }
-.st0_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #8E9093; }
-
-.st1_map {
-  fill: none;
-  stroke: #929498;
-  stroke-width: 0.1814;
-  stroke-miterlimit: 22.9256; }
-
-.st2_map {
-  fill: none;
-  stroke: #929498;
-  stroke-width: 0.1971;
-  stroke-miterlimit: 22.9256; }
-
-.st3_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #8F9093; }
-
-.st4_map {
-  fill: none;
-  stroke: #9D9DA0;
-  stroke-width: 0.216;
-  stroke-miterlimit: 22.9256; }
-
-.st5_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #FFFFFF; }
-
-.st6_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #E2E2E4; }
-
-.st7_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #C7C8CA; }
-
-.st8_map {
-  fill: none;
-  stroke: #929498;
-  stroke-width: 0.216;
-  stroke-miterlimit: 22.9256; }
-
-.st9_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #969E9F; }
-
-.st10_map {
-  fill: none;
-  stroke: #A6A7A9;
-  stroke-width: 0.216;
-  stroke-miterlimit: 22.9256; }
-
-.st11_map {
-  fill: none;
-  stroke: #A6A7A9;
-  stroke-width: 6.240000e-002;
-  stroke-miterlimit: 22.9256; }
-
-.st12_map {
-  fill: #9D9DA0; }
-
-.st13_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #9D9DA0; }
-
-.st14_map {
-  fill: none;
-  stroke: #9D9DA0;
-  stroke-width: 0.1071;
-  stroke-miterlimit: 22.9256; }
-
-.st15_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: none;
-  stroke: #555759;
-  stroke-width: 5.000000e-002;
-  stroke-miterlimit: 10; }
-
-.st16_map {
-  fill: none;
-  stroke: #9D9DA0;
-  stroke-width: 0.4221;
-  stroke-linejoin: round;
-  stroke-miterlimit: 22.9256; }
-
-.st17_map {
-  fill: none;
-  stroke: #FFFFFF;
-  stroke-width: 0.5;
-  stroke-miterlimit: 22.9256; }
-
-.st18_map {
-  fill: #5D5E60; }
-
-.st19_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: none;
-  stroke: #ff4e00;
-  stroke-width: 0.25;
-  stroke-miterlimit: 10; }
-
-.st19_map:hover {
-  stroke-width: .5;
-  cursor: pointer; }
-
-.opennedRoadMap {
-  stroke-width: .5; }
-
-.st20_map {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: none;
-  stroke: #5D5E60;
-  stroke-width: 5.000000e-002;
-  stroke-miterlimit: 10; }
-
 .carTextContainer h1 {
   font-weight: bold;
   font-size: 18px; }
@@ -157,7 +30,6 @@ header {
   z-index: 100; }
 
 #page_content {
-  opacity: 0;
   transition: opacity 3s 1s ease; }
 
 .container ul li {
@@ -204,7 +76,7 @@ header {
 #controls {
   position: absolute;
   z-index: 10;
-  bottom: 3vh;
+  bottom: calc( 43vh - 40px);
   width: 5vh;
   right: 3vh; }
 
@@ -217,7 +89,8 @@ header {
   border-radius: 15px;
   margin: 0 10px;
   padding: 5px;
-  cursor: pointer; }
+  cursor: pointer;
+  margin-top: calc(50vh - 33px); }
 
 #roads .road:hover {
   border: 1px solid #ff4e00; }
@@ -328,12 +201,12 @@ header {
   min-width: 400px; }
 
 .close_btn {
-  float: right;
   height: 3vh;
-  margin: 2vh;
+  margin: 0 3vh;
   cursor: pointer;
-  z-index: 3;
-  position: relative; }
+  position: absolute;
+  right: 0;
+  z-index: 3; }
 
 .dropdown-item.active, .dropdown-item:active {
   background-color: #fbfbfb; }
@@ -531,6 +404,29 @@ footer img {
 .footer_text_right {
   float: right; }
 
+#roads {
+  height: 100vh;
+  width: 100vw;
+  float: left;
+  transition: all ease .2s; }
+
+.road_row {
+  height: calc(100vh - 80px); }
+
+.road_container {
+  height: 100%;
+  background-size: cover;
+  background-position: center center; }
+
+#roadSection {
+  overflow: hidden; }
+
+#roadSectionInner {
+  width: 10000000px; }
+
+#road_info.openRoad {
+  float: left; }
+
 @media (min-width: 1200px) {
   .container {
     max-width: 1180px !important; } }
@@ -557,7 +453,9 @@ footer img {
     margin-top: -80px; }
 
   #roads {
-    padding: 0 0 20vh; }
+    padding: 0 0 20vh;
+    display: inline-block;
+    width: 100vw; }
 
   #road_info {
     margin-top: 20vh; }
@@ -663,5 +561,782 @@ footer img {
 
   .h1_container h1 {
     font-size: 30px; } }
+.st0_zoom {
+  fill: #ff4e00; }
+
+.st1_zoom {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
+.st2_zoom {
+  clip-path: url(#SVGID_2_222);
+  fill: #ff4e00; }
+
+.st3_zoom {
+  clip-path: url(#SVGID_2_222);
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
+.st0_map {
+  fill: #FFFFFF; }
+
+.st1_map {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 1.25;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map {
+  enable-background: new; }
+
+.st3_map {
+  clip-path: url(#SVGID_2_); }
+
+.st4_map {
+  fill: #E2E2E4; }
+
+.st5_map {
+  fill: #E2E2E4;
+  stroke: #C7C7C9;
+  stroke-miterlimit: 3.8640001; }
+
+.st6_map {
+  fill: #CEE9FC;
+  stroke: #95BECB;
+  stroke-width: 0.5;
+  stroke-miterlimit: 3.8640001; }
+
+.st7_map {
+  fill: #CEE9FC; }
+
+.st8_map {
+  fill: none;
+  stroke: #C7C7C9;
+  stroke-linejoin: round; }
+
+.st9_map {
+  fill: none;
+  stroke: #C7C7C9;
+  stroke-miterlimit: 3.8640001; }
+
+.st1_map0 {
+  fill: none;
+  stroke: #6086C4;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round; }
+
+.st1_map1 {
+  fill: none;
+  stroke: #BBBCBE;
+  stroke-miterlimit: 3.8640001; }
+
+.st1_map2 {
+  fill: none;
+  stroke: #95BECB;
+  stroke-width: 0.5;
+  stroke-miterlimit: 3.8640001; }
+
+.st1_map3 {
+  fill: #87898C; }
+
+.st1_map4 {
+  font-family: 'Lato-MediumItalic'; }
+
+.st1_map5 {
+  font-size: 10.0767403px; }
+
+.st1_map6 {
+  fill: none;
+  stroke: #8AB3BB;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st1_map7 {
+  fill: #CEE9FC;
+  stroke: #8AB3BB;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st1_map8 {
+  clip-path: url(#SVGID_4_);
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #FFFFFF; }
+
+.st1_map9 {
+  clip-path: url(#SVGID_4_);
+  fill: #CEE9FC; }
+
+.st2_map0 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #C9C8C8;
+  stroke-width: 6;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map1 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #E2E2E4;
+  stroke-width: 6;
+  stroke-miterlimit: 10; }
+
+.st2_map2 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #E2E2E4;
+  stroke-width: 7;
+  stroke-miterlimit: 10; }
+
+.st2_map3 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #C9C8C8;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map4 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #C9C8C8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map5 {
+  clip-path: url(#SVGID_4_);
+  fill: #FFFFFF; }
+
+.st2_map6 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #95BECB;
+  stroke-width: 0.5;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map7 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map8 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 1.25;
+  stroke-miterlimit: 3.8640001; }
+
+.st2_map9 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map0 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.75;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map1 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.75;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map2 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #8AB3BB;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map3 {
+  clip-path: url(#SVGID_4_);
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #CEE9FC; }
+
+.st3_map4 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map5 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map6 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-miterlimit: 3.8640001;
+  stroke-dasharray: 8,3; }
+
+.st3_map7 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 5;
+  stroke-miterlimit: 3.8640001;
+  stroke-dasharray: 1,10; }
+
+.st3_map8 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #E18C44;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st3_map9 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #F1C7A8;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st4_map0 {
+  clip-path: url(#SVGID_4_); }
+
+.st4_map1 {
+  fill: none;
+  stroke: #F1C7A8;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001; }
+
+.st4_map2 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #BBBCBE;
+  stroke-miterlimit: 3.8640001; }
+
+.st4_map3 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-miterlimit: 3.8640001;
+  stroke-dasharray: 8,1,1,1; }
+
+.st4_map4 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #949598;
+  stroke-miterlimit: 3.8640001; }
+
+.st4_map5 {
+  fill: none;
+  stroke: #E2E2E4;
+  stroke-miterlimit: 10; }
+
+.st4_map6 {
+  fill: none;
+  stroke: #949598;
+  stroke-miterlimit: 3.8640001; }
+
+.st4_map7 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round; }
+
+.st4_map8 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4712279,0.4712279,0.4712279,0.4712279; }
+
+.st4_map9 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.7698228,0.4712279,0.4712279,0.4712279,0.4712279,0.4712279; }
+
+.st5_map0 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.3285431,0.3285431,0.3285431,0.3285431; }
+
+.st5_map1 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.2629209,0.2629209,0.2629209,0.2629209; }
+
+.st5_map2 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 2.1033676,0.2629209,0.2629209,0.2629209,0.2629209,0.2629209; }
+
+.st5_map3 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4705682,0.4705682,0.4705682,0.4705682; }
+
+.st5_map4 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.1033883,0.1033883,0.1033883,0.1033883; }
+
+.st5_map5 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5104081,0.5104081,0.5104081,0.5104081; }
+
+.st5_map6 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0832648,0.5104081,0.5104081,0.5104081,0.5104081,0.5104081; }
+
+.st5_map7 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4918534,0.4918534,0.4918534,0.4918534; }
+
+.st5_map8 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.9348271,0.4918534,0.4918534,0.4918534,0.4918534,0.4918534; }
+
+.st5_map9 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4980562,0.4980562,0.4980562,0.4980562; }
+
+.st6_map0 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.9844499,0.4980562,0.4980562,0.4980562,0.4980562,0.4980562; }
+
+.st6_map1 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5307143,0.5307143,0.5307143,0.5307143; }
+
+.st6_map2 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.2457142,0.5307143,0.5307143,0.5307143,0.5307143,0.5307143; }
+
+.st6_map3 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5095505,0.5095505,0.5095505,0.5095505; }
+
+.st6_map4 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0764041,0.5095505,0.5095505,0.5095505,0.5095505,0.5095505; }
+
+.st6_map5 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5016487,0.5016487,0.5016487,0.5016487; }
+
+.st6_map6 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0131893,0.5016487,0.5016487,0.5016487,0.5016487,0.5016487; }
+
+.st6_map7 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.3868184,0.3868184,0.3868184,0.3868184; }
+
+.st6_map8 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.094547,0.3868184,0.3868184,0.3868184,0.3868184,0.3868184; }
+
+.st6_map9 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4889649,0.4889649,0.4889649,0.4889649; }
+
+.st7_map0 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.9117191,0.4889649,0.4889649,0.4889649,0.4889649,0.4889649; }
+
+.st7_map1 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5152009,0.5152009,0.5152009,0.5152009; }
+
+.st7_map2 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.1216073,0.5152009,0.5152009,0.5152009,0.5152009,0.5152009; }
+
+.st7_map3 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.37206,0.37206,0.37206,0.37206; }
+
+.st7_map4 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5072702,0.5072702,0.5072702,0.5072702; }
+
+.st7_map5 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0581613,0.5072702,0.5072702,0.5072702,0.5072702,0.5072702; }
+
+.st7_map6 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5153583,0.5153583,0.5153583,0.5153583; }
+
+.st7_map7 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.1228662,0.5153583,0.5153583,0.5153583,0.5153583,0.5153583; }
+
+.st7_map8 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.417918,0.417918,0.417918,0.417918; }
+
+.st7_map9 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.3433442,0.417918,0.417918,0.417918,0.417918,0.417918; }
+
+.st8_map0 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.522846,0.522846,0.522846,0.522846; }
+
+.st8_map1 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.1827683,0.522846,0.522846,0.522846,0.522846,0.522846; }
+
+.st8_map2 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5003816,0.5003816,0.5003816,0.5003816; }
+
+.st8_map3 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0030532,0.5003816,0.5003816,0.5003816,0.5003816,0.5003816; }
+
+.st8_map4 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4906414,0.4906414,0.4906414,0.4906414; }
+
+.st8_map5 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.9251316,0.4906414,0.4906414,0.4906414,0.4906414,0.4906414; }
+
+.st8_map6 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4955992,0.4955992,0.4955992,0.4955992; }
+
+.st8_map7 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.9647932,0.4955992,0.4955992,0.4955992,0.4955992,0.4955992; }
+
+.st8_map8 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5120355,0.5120355,0.5120355,0.5120355; }
+
+.st8_map9 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0962844,0.5120355,0.5120355,0.5120355,0.5120355,0.5120355; }
+
+.st9_map0 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.5160794,0.5160794,0.5160794,0.5160794; }
+
+.st9_map1 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.1286354,0.5160794,0.5160794,0.5160794,0.5160794,0.5160794; }
+
+.st9_map2 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.3289435,0.3289435,0.3289435,0.3289435; }
+
+.st9_map3 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.4359165,0.4359165,0.4359165,0.4359165; }
+
+.st9_map4 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.4873319,0.4359165,0.4359165,0.4359165,0.4359165,0.4359165; }
+
+.st9_map5 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.6902221,0.6902221,0.6902221,0.6902221; }
+
+.st9_map6 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.486813,0.486813,0.486813,0.486813; }
+
+.st9_map7 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 3.8945038,0.486813,0.486813,0.486813,0.486813,0.486813; }
+
+.st9_map8 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.507075,0.507075,0.507075,0.507075; }
+
+.st9_map9 {
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-dasharray: 4.0565996,0.507075,0.507075,0.507075,0.507075,0.507075; }
+
+.st1_map00 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #3EB5F1;
+  stroke-width: 0.5;
+  stroke-linejoin: round;
+  stroke-miterlimit: 3.8640001;
+  stroke-dasharray: 4,0.5,0.5,0.5,0.5,0.5; }
+
+.st1_map01 {
+  fill: none; }
+
+.st1_map02 {
+  fill: #363636; }
+
+.st1_map03 {
+  font-size: 13px; }
+
+.st1_map04 {
+  font-family: 'Arial-ItalicMT'; }
+
+.st1_map05 {
+  font-size: 16px; }
+
+.st1_map06 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #A1CAC1; }
+
+.st1_map07 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #D15845; }
+
+.st1_map08 {
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: #FFFFFF; }
+
+.st1_map09 {
+  fill: #3EB5F1; }
+
+.st1_map10 {
+  font-size: 6px; }
+
+.st1_map11 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #ff4e00;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-miterlimit: 10; }
+
+.st1_map12 {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #ff4e00;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
+.st1_map13 {
+  clip-path: url(#SVGID_4_);
+  fill-rule: evenodd;
+  clip-rule: evenodd;
+  fill: none;
+  stroke: #ff4e00;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-miterlimit: 10; }
+
+.st1_map14 {
+  clip-path: url(#SVGID_2_);
+  fill: none;
+  stroke: #000000;
+  stroke-miterlimit: 10; }
+
+.st1_map15 {
+  clip-path: url(#SVGID_2_);
+  fill: none;
+  stroke: #C7C7C9;
+  stroke-linejoin: round; }
+
+.st1_map16 {
+  fill: #52A67A; }
+
+.st1_map17 {
+  display: none; }
+
+.st1_map11:hover {
+  stroke-width: 3;
+  cursor: pointer; }
+
+.st1_map12:hover {
+  stroke-width: 3;
+  cursor: pointer; }
+
+.st1_map13:hover {
+  stroke-width: 3;
+  cursor: pointer; }
 
 /*# sourceMappingURL=style.css.map */
