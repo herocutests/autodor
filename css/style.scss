@@ -43,7 +43,7 @@ body *{
     position: fixed;
     z-index: 100;
     opacity: 1;
-    transition: opacity 5s 3s ease;
+    transition: opacity 2s 3s ease;
 }
 
 header{
@@ -121,11 +121,48 @@ header{
 #roads .road{
 	height: 67px;
     border: 1px solid $green_color;
+    background-color: white;
     border-radius: 15px;
     margin: 0 10px;
     padding: 5px;
     cursor: pointer;
 	margin-top: calc(50vh - 33px);
+}
+
+.road_container:hover .road{
+	display: none;
+}
+
+.road_container:hover .road_hover{
+	display: block;
+}
+
+ .road_container .road_hover{
+	display: none;
+}
+
+.road_hover h1{
+	margin-top: calc(17vh - 33px);
+    font-size: 36px;
+    padding-bottom: 8vh;
+    border-bottom: 1px solid white;
+}
+
+.road_hover p{
+	margin: 8vh 0;
+}
+
+.road_hover p span{
+	font-size: 25px;
+}
+
+.road_hover button{
+	width: 80%;
+    margin-top: 7vh;
+    padding: 1vh 0;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
 }
 
 #roads .road:hover{
@@ -270,8 +307,9 @@ header{
     margin: 0 3vh;
     cursor: pointer;
     position: absolute;
-    right: 0;
+    right: 100vw;
     z-index: 3;
+    top: calc(100vh + 20px);
 }
 
 .dropdown-item.active, .dropdown-item:active{
@@ -527,6 +565,9 @@ footer img{
 	height: 100%;
 	background-size: cover;
 	background-position: center center;
+	color: white;
+    text-align: center;
+    cursor: pointer
 }
 
 #roadSection{
@@ -879,3 +920,25 @@ footer img{
 	.st1_map12:hover{stroke-width:3; cursor: pointer;}
 	.st1_map13:hover{stroke-width:3; cursor: pointer;}
 	
+	.st0_left{fill:$orange_color;}
+	.st1_left{fill:none;stroke:$orange_color;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+
+	.st0_right{fill:$orange_color;}
+	.st1_right{fill:none;stroke:$orange_color;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+
+	.left-right-btn{
+		width: 7vh;
+    	position: absolute;
+    	top: calc(150vh - 80px + 3.5vh);
+    	background-color: white;
+    	cursor: pointer;
+    	z-index: 10;
+    	opacity: 0;
+	}
+
+	#slide-right{
+		right: 1vw;
+	}
+	#slide-left{
+		left: 1vw;
+	}
