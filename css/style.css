@@ -77,12 +77,12 @@ header {
 #controls {
   position: absolute;
   z-index: 10;
-  bottom: calc( 43vh - 40px);
+  bottom: calc( 46vh - 40px);
   width: 5vh;
-  right: 3vh; }
+  right: 2vh; }
 
 #roads {
-  padding: 0 0 25vh; }
+  padding: 0 0 15vh; }
 
 #roads .road {
   height: 67px;
@@ -105,7 +105,7 @@ header {
 
 .road_hover h1 {
   margin-top: calc(17vh - 33px);
-  font-size: 36px;
+  font-size: 33px;
   padding-bottom: 8vh;
   border-bottom: 1px solid white; }
 
@@ -148,7 +148,7 @@ header {
   height: auto;
   opacity: 0;
   overflow: hidden;
-  margin-top: 25vh;
+  margin-top: 15vh;
   transition: all 1s ease; }
 
 #road_info.openRoad {
@@ -156,13 +156,14 @@ header {
   opacity: 1;
   margin-top: 0px;
   padding-top: 40px;
-  margin-bottom: 25vh; }
+  margin-bottom: 15vh; }
 
 .road_info_inner {
   position: relative;
   display: inline-flex;
   flex-direction: column;
-  height: calc(90vh - 100px); }
+  height: calc(90vh - 100px);
+  transition: left ease .2s; }
 
 .svg_path_container {
   height: 33%; }
@@ -244,7 +245,7 @@ header {
   background-color: #fbfbfb; }
 
 #progress {
-  margin-bottom: 25vh; }
+  margin-bottom: 15vh; }
 
 #history .row p {
   margin-bottom: 20px; }
@@ -256,7 +257,9 @@ header {
   flex-direction: column; }
 
 .imgTextContainer {
-  display: flex; }
+  display: flex;
+  opacity: 0;
+  transition: all ease 1s; }
 
 .imgTextContainer img {
   width: 80%; }
@@ -271,6 +274,9 @@ header {
   padding-left: 0%;
   width: 100%;
   padding-right: 40%; }
+
+.imgTextContainer:nth-child(2n) .leftSide {
+  text-align: right; }
 
 .imgTextContainer:nth-child(2n) h1 {
   text-align: right;
@@ -293,12 +299,18 @@ header {
 .imgTextContainer:nth-child(6) {
   margin-top: -50px; }
 
+.imgTextContainer:nth-child(10) {
+  margin-top: -50px; }
+
+.imgTextContainer:nth-child(11) {
+  margin-top: -50px; }
+
 .imgTextContainer div {
   width: 50%;
   object-fit: contain; }
 
 .history-container {
-  margin-bottom: 25vh; }
+  margin-bottom: 15vh; }
 
 #svg {
   position: absolute;
@@ -307,7 +319,7 @@ header {
 .h1_container {
   position: relative;
   text-align: center;
-  margin-bottom: 15vh; }
+  margin-bottom: 7vh; }
 
 .h1_container h1 {
   margin: auto;
@@ -595,6 +607,23 @@ footer img {
 
   .leftSide {
     order: 1; } }
+@media (min-width: 2000px) {
+  .road_container {
+    height: 60vh;
+    margin-top: 20vh; }
+
+  #roads .road {
+    margin-top: calc(30vh - 33px ); }
+
+  .road_hover h1 {
+    margin-top: calc(15vh - 33px);
+    padding-bottom: 4vh; }
+
+  .road_hover p {
+    margin: 4vh 0; }
+
+  .road_hover button {
+    margin-top: 5vh; } }
 @media (max-width: 750px) {
   .road {
     margin-bottom: 20px !important; }
@@ -604,6 +633,30 @@ footer img {
 
   .h1_container h1 {
     font-size: 30px; } }
+.st0_zoom {
+  fill: #DA6E5B; }
+
+.st1_zoom {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
+.st2_zoom {
+  clip-path: url(#SVGID_2_);
+  fill: #DA6E5B; }
+
+.st3_zoom {
+  clip-path: url(#SVGID_4_);
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-miterlimit: 10; }
+
 .st0_zoom {
   fill: #ff4e00; }
 
@@ -692,7 +745,7 @@ footer img {
   fill: #87898C; }
 
 .st1_map4 {
-  font-family: 'Lato-MediumItalic'; }
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; }
 
 .st1_map5 {
   font-size: 10.0767403px; }
@@ -747,7 +800,7 @@ footer img {
   clip-path: url(#SVGID_4_);
   fill: none;
   stroke: #C9C8C8;
-  stroke-width: 3;
+  stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 3.8640001; }
@@ -876,7 +929,7 @@ footer img {
 .st4_map1 {
   fill: none;
   stroke: #F1C7A8;
-  stroke-width: 1.5;
+  stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 3.8640001; }
@@ -1405,9 +1458,9 @@ footer img {
   stroke-miterlimit: 10; }
 
 .left-right-btn {
-  width: 7vh;
+  width: 4vh;
   position: absolute;
-  top: calc(150vh - 80px + 3.5vh);
+  top: calc(150vh - 80px + 2vh);
   background-color: white;
   cursor: pointer;
   z-index: 10;

@@ -15,8 +15,8 @@ $gray_color_h1: #606060;
 $font: 'PromtImperial';
 $fontBold: 'PromtImperialBold';
 $road_info_height: 100%;
-$margin: 25vh;
-$margin_h1: 15vh;
+$margin: 15vh;
+$margin_h1: 7vh;
 $medium_margin_h1: 10vh;
 $medium_margin: 20vh;
 
@@ -109,9 +109,9 @@ header{
 #controls{
 	position: absolute;
     z-index: 10;
-    bottom: calc( 43vh - 40px);
+    bottom: calc( 46vh - 40px);
     width: 5vh;
-    right: 3vh;
+    right: 2vh;
 }
 
 #roads{
@@ -143,7 +143,7 @@ header{
 
 .road_hover h1{
 	margin-top: calc(17vh - 33px);
-    font-size: 36px;
+    font-size: 33px;
     padding-bottom: 8vh;
     border-bottom: 1px solid white;
 }
@@ -212,6 +212,7 @@ header{
 	display: inline-flex;
 	flex-direction: column;
 	height: calc(90vh - 100px);
+	transition: left ease .2s;
 }
 
 .svg_path_container{
@@ -333,6 +334,8 @@ header{
 
 .imgTextContainer {
     display: flex;
+    opacity: 0;
+	transition: all ease 1s;
 }
 
 .imgTextContainer img{
@@ -350,6 +353,9 @@ header{
 	padding-left: 0%;
     width: 100%;
     padding-right: 40%;
+}
+.imgTextContainer:nth-child(2n) .leftSide{
+	text-align: right;
 }
 .imgTextContainer:nth-child(2n) h1{
 	text-align: right;
@@ -375,6 +381,13 @@ header{
 }
 
 .imgTextContainer:nth-child(6){
+	margin-top: -50px;
+}
+
+.imgTextContainer:nth-child(10){
+	margin-top: -50px;
+}
+.imgTextContainer:nth-child(11){
 	margin-top: -50px;
 }
 
@@ -730,6 +743,25 @@ footer img{
 	}
 }
 
+@media (min-width: 2000px){
+	.road_container {
+	    height: 60vh;
+	    margin-top: 20vh;
+	}
+	#roads .road{
+		margin-top: calc(30vh - 33px );
+	}
+	.road_hover h1 {
+	    margin-top: calc(15vh - 33px);
+	    padding-bottom: 4vh;
+	}
+	.road_hover p {
+	    margin: 4vh 0;
+	}
+	.road_hover button {
+	    margin-top: 5vh;
+	}
+}
 
 @media (max-width: 750px){
 	.road{
@@ -742,6 +774,12 @@ footer img{
 		font-size: 30px;
 	}
 }
+
+.st0_zoom{fill:#DA6E5B;}
+.st1_zoom{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+.st2_zoom{clip-path:url(#SVGID_2_);fill:#DA6E5B;}
+
+.st3_zoom{clip-path:url(#SVGID_4_);fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 
 .st0_zoom{fill:$orange_color;}
 .st1_zoom{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
@@ -762,7 +800,7 @@ footer img{
 	.st1_map1{fill:none;stroke:#BBBCBE;stroke-miterlimit:3.8640001;}
 	.st1_map2{fill:none;stroke:#95BECB;stroke-width:0.5;stroke-miterlimit:3.8640001;}
 	.st1_map3{fill:#87898C;}
-	.st1_map4{font-family:'Lato-MediumItalic';}
+	.st1_map4{font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";}
 	.st1_map5{font-size:10.0767403px;}
 	.st1_map6{fill:none;stroke:#8AB3BB;stroke-width:0.5;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	.st1_map7{fill:#CEE9FC;stroke:#8AB3BB;stroke-width:0.5;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
@@ -772,7 +810,7 @@ footer img{
 	.st2_map1{clip-path:url(#SVGID_4_);fill:none;stroke:#E2E2E4;stroke-width:6;stroke-miterlimit:10;}
 	.st2_map2{clip-path:url(#SVGID_4_);fill:none;stroke:#E2E2E4;stroke-width:7;stroke-miterlimit:10;}
 	
-		.st2_map3{clip-path:url(#SVGID_4_);fill:none;stroke:#C9C8C8;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
+		.st2_map3{clip-path:url(#SVGID_4_);fill:none;stroke:#C9C8C8;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	
 		.st2_map4{clip-path:url(#SVGID_4_);fill:none;stroke:#C9C8C8;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	.st2_map5{clip-path:url(#SVGID_4_);fill:#FFFFFF;}
@@ -794,7 +832,7 @@ footer img{
 	
 		.st3_map9{clip-path:url(#SVGID_4_);fill:none;stroke:#F1C7A8;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	.st4_map0{clip-path:url(#SVGID_4_);}
-	.st4_map1{fill:none;stroke:#F1C7A8;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
+	.st4_map1{fill:none;stroke:#F1C7A8;stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	.st4_map2{clip-path:url(#SVGID_4_);fill:none;stroke:#BBBCBE;stroke-miterlimit:3.8640001;}
 	.st4_map3{clip-path:url(#SVGID_4_);fill:none;stroke:#3EB5F1;stroke-miterlimit:3.8640001;stroke-dasharray:8,1,1,1;}
 	.st4_map4{clip-path:url(#SVGID_4_);fill:none;stroke:#949598;stroke-miterlimit:3.8640001;}
@@ -934,9 +972,9 @@ footer img{
 	.st1_right{fill:none;stroke:$orange_color;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 
 	.left-right-btn{
-		width: 7vh;
+		width: 4vh;
     	position: absolute;
-    	top: calc(150vh - 80px + 3.5vh);
+    	top: calc(150vh - 80px + 2vh);
     	background-color: white;
     	cursor: pointer;
     	z-index: 10;
