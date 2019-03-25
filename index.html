@@ -16684,12 +16684,19 @@ $('.road_info_inner .last_part').append(createRoad(contents.road_1.bottom_part))
 	});
 
 $(window).on('load', function () {
+	movingCarContainer = $('#movingCarContainer').height();
+	$.each($('.imgTextContainer'), function(ix, el){
+		var this_mt = parseInt($(this).css('margin-top')) + 100;
+		$(this).css({'margin-top': (this_mt)+'px'});
+		if($(this).offset().top < (window.scrollY || window.pageYOffset) + (window.innerHeight * 0.75 ) ){
+			$(this).css({'opacity': '1'});
+		}
+	})
 	$("#main_block").css({'opacity': 0});
 	$("#page_content").css({'opacity': 1});
 
 	setTimeout(function() {
 		$("#main_block").remove();
-		resize();
 		setTimeout(function() {
 			resize();
 		}, 1000)
@@ -16734,7 +16741,7 @@ function calcWidth() {
 	$('#road_info *').removeAttr('style');
 	$(".info_text_container").each(function(i) {
 		$(this).removeAttr('style');
-		var height = calcChildHeight($(this)) - 40;
+		var height = calcChildHeight($(this));
 		var S = height * $(this).width();
 		$(this).width( (S / $('.info_container img').height() ) +'px');
 	})
@@ -16816,17 +16823,6 @@ let resiveSVG = () => {
 
 var movingCarContainer = 0;
 
-$(function() {
-	movingCarContainer = $('#movingCarContainer').height();
-	$.each($('.imgTextContainer'), function(ix, el){
-		var this_mt = parseInt($(this).css('margin-top')) + 100;
-		$(this).css({'margin-top': (this_mt)+'px'});
-		if($(this).offset().top < (window.scrollY || window.pageYOffset) + (window.innerHeight * 0.75 ) ){
-			$(this).css({'opacity': '1'});
-		}
-	})
-	resiveSVG();
-})
 
 function resize() {
 	$('.col-4, .col-6').textfill({widthOnly: true, maxFontPixels: 300}); 
@@ -16843,15 +16839,15 @@ window.onresize = function(event) {
 };
 
 var scroll = 0;
-
+var scrollCount = $('body').width()/2;
 
 $('.left-right-btn').click(function() {
 	if($(this).attr('id') == 'slide-right' )
-		scroll -= 100;
+		scroll -= scrollCount;
 	if(scroll < (($('.road_info_inner').width() - $(window).width() )* (-1)))
 		scroll = ($('.road_info_inner').width() - $(window).width()) * (-1);
 	if($(this).attr('id') == 'slide-left' )
-		scroll += 100;
+		scroll += scrollCount;
 	if(scroll > 0)
 		scroll = 0;
 	$('.road_info_inner').css('left', scroll+'px');

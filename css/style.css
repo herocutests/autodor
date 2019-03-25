@@ -163,7 +163,8 @@ header {
   display: inline-flex;
   flex-direction: column;
   height: calc(90vh - 100px);
-  transition: left ease .2s; }
+  transition: left ease .5s;
+  left: 0; }
 
 .svg_path_container {
   height: 33%; }
