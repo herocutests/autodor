@@ -161,6 +161,7 @@ header {
 .road_info_inner {
   position: relative;
   display: inline-flex;
+  display: -webkit-inline-flex;
   flex-direction: column;
   height: calc(90vh - 100px);
   transition: left ease .5s;
@@ -171,8 +172,7 @@ header {
 
 .image_container {
   position: relative;
-  height: 100%;
-  width: auto; }
+  height: 100%; }
 
 .image_container .image_line {
   border: 1px solid #ff4e00;
@@ -193,14 +193,15 @@ header {
 
 .info_container {
   display: flex;
-  object-fit: contain; }
+  /*object-fit: contain;*/
+  height: 100%; }
 
 .info_container img {
   height: 100%;
   margin-right: 40px;
   margin-left: 60px;
-  object-fit: contain;
-  align-self: baseline; }
+  /*object-fit: contain;
+  align-self: baseline;*/ }
 
 .info_container:nth-of-type(1) img {
   margin-left: 0px; }

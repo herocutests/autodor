@@ -16741,7 +16741,7 @@ function calcWidth() {
 	$('#road_info *').removeAttr('style');
 	$(".info_text_container").each(function(i) {
 		$(this).removeAttr('style');
-		var height = calcChildHeight($(this));
+		var height = calcChildHeight($(this)) - ($('.info_text_container h1').outerHeight() / 2);
 		var S = height * $(this).width();
 		$(this).width( (S / $('.info_container img').height() ) +'px');
 	})
