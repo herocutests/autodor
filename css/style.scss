@@ -196,7 +196,7 @@ header{
 	opacity: 0;
 	overflow: hidden;
 	margin-top: $margin;
-	transition: all 1s ease;
+	transition: all .2s ease;
 }
 
 #road_info.openRoad{
@@ -213,7 +213,7 @@ header{
 	display: -webkit-inline-flex;
 	flex-direction: column;
 	height: calc(90vh - 100px);
-	transition: left ease .5s;
+	transition: left ease .2s;
 	left: 0;
 }
 
@@ -589,12 +589,13 @@ footer img{
 
 #roadSection{
 	overflow: hidden;
-}
-#roadSectionInner{
-    width: 10000000px;
+	height: 100vh;
 }
 #road_info.openRoad{
 	float: left;
+}
+#roadSectionInner{
+	width: 1000000000px;
 }
 
 .navbar-expand-lg .navbar-nav .nav-link {
@@ -749,6 +750,20 @@ footer img{
 	.road_container {
 	    height: 60vh;
 	    margin-top: 20vh;
+	}
+	.road_info_inner {
+	    height: 60vh;
+	    margin-top: 20vh;
+	}
+	.h1_container {
+	    margin-bottom: 4vh;
+	}
+	#progress {
+	    margin-bottom: 8vh;
+	}
+
+	.close_btn {
+	    top: calc(115vh);
 	}
 	#roads .road{
 		margin-top: calc(30vh - 33px );
