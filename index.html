@@ -14767,7 +14767,7 @@
 			<g class="st4_map0">
 				<text transform="matrix(1 0 0 1 428.3825684 574.6604614)" class="st1_map02 st1_map4 st1_map5">Р</text>
 				<text transform="matrix(0.7 0 0 0.7 433.7434082 574.6604614)" class="st1_map02 st1_map4 st1_map5">остов</text>
-				<text transform="matrix(1 0 0 1 454.8830566 574.6604614)" class="st1_map02 st1_map4 st1_map5">-</text>
+				<text transform="matrix(1 0 0 1 452.883057 574.660461)" class="st1_map02 st1_map4 st1_map5">-</text>
 				<text transform="matrix(0.7 0 0 0.7 457.9763184 574.6604614)" class="st1_map02 st1_map4 st1_map5">на</text>
 				<text transform="matrix(1 0 0 1 466.892334 574.6604614)" class="st1_map02 st1_map4 st1_map5">-Д</text>
 				<text transform="matrix(0.7 0 0 0.7 476.3342285 574.6604614)" class="st1_map02 st1_map4 st1_map5">ону</text>
@@ -16316,8 +16316,9 @@
 				<svg version="1.1" id="m1_path_svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 				viewBox="819 143 2316.2 276" xml:space="preserve" preserveAspectRatio="none">
 					<style type="text/css">
-						.st2_m1{fill:none;stroke:#FF4E00;stroke-width:2;stroke-miterlimit:100;}
-						#m1_path_svg{enable-background:new 819 143 2316.2 276; width: 100%; height: 100%;}
+						.st2_m1{fill:none;stroke:#c4c4c4;stroke-width:2;stroke-miterlimit:100;}
+						#m1_path_svg{enable-background:new
+						 819 143 2316.2 276; width: 100%; height: 100%;}
 					</style>
 					<path class="st2_m1" id="m1_path" d="M819,282.3c0,0,6.8-0.5,11.5-2.2s30.7-14,42.7-18.3c12-4.3,36.7-9.2,52-10.3s160.5,3.5,195.2,6.8
 					c34.7,3.3,179.3,14.7,197.3,24c18,9.3,12,16.7,35.3,25.3c23.3,8.7,65.3-5,84.7-13.2c19.3-8.1,88.7-46.2,122.7-43.2
@@ -16327,12 +16328,7 @@
 				</svg>
 			</div> 
 			<div class="first_part last_part">
-				<div class="road_title_container">
-					<h1 class="first_title">История</h1>
-					<h1 class="first_title">трассы</h1>
-					<h1 class="first_title">М1</h1>
-				</div>
-				
+
 			</div>
 		</div>
 		<svg version="1.1" id="slide-right" class='left-right-btn'
@@ -16495,6 +16491,8 @@
 
 var contents = {
   "road_1": {
+  	'h1': ['ИСТОРИЯ', 'ТРАССЫ', 'М-1'],
+    'p': 'Ни одна дорога страны не имеет такой богатой истории. Трасса М–1, или как ее всегда называли «Минка», хранит память о значимых событиях, которые переворачивали историю России в XIX и XX веках. </br>Веком ранее по Смоленской дороге на Москву шел Наполеон и позорно бежал обратно. В 1980 году дорога принимала Олимпиаду.</br>Современная ее история начинает свой отсчет с 1 октября 1938 года, момента создания Управления дороги «Москва – Минск».',
     "top_part":{
       "1": {
         "title": "Начало строительства",
@@ -16633,6 +16631,7 @@ function createRoad(road){
   		mark += '<div class="info_container">' +
 					'<div class="image_container">' +
 						'<div class="image_line"></div>' +
+						'<div class="year_container"><span>'+el.year+'</span></div>' +
 						'<img src="img/'+el.img+'" alt="">' +
 						'<div class="image_sircle"></div>' +
 					'</div>' +
@@ -16645,8 +16644,20 @@ function createRoad(road){
 	return mark;
 }
 
-$('.road_info_inner .first_part').first().append(createRoad(contents.road_1.top_part));
-$('.road_info_inner .last_part').append(createRoad(contents.road_1.bottom_part));
+function firstTextMark(el) {
+	let mark = '<div class="info_container">' +
+			'<div>';
+	$.each(el.h1, function(ix, h1){
+		mark += '<div class="info_container_first"><h1>'+h1+'</h1></div>';
+	})
+	mark += '</div> </div> <div class="info_container info_container_second"> <div class="info_text_container">';
+return mark + '<p>'+el.p+'</p>' +
+			'</div>' +
+		'</div>';
+}
+
+$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createRoad(contents.road_1.top_part));
+$('.road_info_inner .last_part').html(createRoad(contents.road_1.bottom_part));
 
 function isMobile(){
 		var isMobile = false; 
@@ -16730,7 +16741,7 @@ function openRoadInfo() {
 	scroll = 0;
 	setTimeout(function() {
 		calcWidth();
-	}, 199);
+	}, 499);
 	
 	setTimeout(function() {
 		resiveSVG();
@@ -16745,6 +16756,7 @@ function calcWidth() {
 		var S = height * $(this).width();
 		$(this).width( (S / $('.info_container img').height() ) +'px');
 	})
+
 	placeBefore();
 	scroll = 0;
 	$('.close_btn').css('right', '0px');
@@ -16754,20 +16766,28 @@ function calcWidth() {
 
 function placeBefore() {
 	var imageWidth = $('.image_container img').width();
+	var marginLeft = $('.info_container_second').offset().left + ($('.info_container_second').width() / 2);
+	$('.svg_path_container').css('margin-left', (marginLeft)+'px' );
+	$('.last_part').css('margin-left', (marginLeft - (imageWidth / 2))+'px');
+	var offsetLeft = $('#m1_path_svg').offset().left;
+
+	
 	var halfImageWidth = imageWidth / 2;
-	var maxWidth = $('#m1_path_svg').width() - halfImageWidth;
+	var maxWidth = $('#m1_path_svg').width();
 	var path = document.getElementById("m1_path");
 	var pathLen = path.getTotalLength();
-	var  helper = document.getElementById("helper");
-	$('#m1_path_svg').css('padding-left', (imageWidth / 2)+'px' );
+	var helper = document.getElementById("helper");
 	helper.removeAttribute("transform");
+	
 
 	$('.image_container').each(function(i) {
-
+		if($(this).hasClass('info_container_second'))
+			return;
 		var imgLeft = parseInt($(this).children('img:first').css('margin-left'));
 		var imgTop = parseInt($(this).children('img:first').offset().top);
 		var line = $(this).children('.image_line:first');
 		var curcle = $(this).children('.image_sircle:first');
+		var year = $(this).children('.year_container:first');
 
 		curcle.removeAttr('style');
 		line.removeAttr('style');
@@ -16776,7 +16796,7 @@ function placeBefore() {
 		var curcleLeft = ( imageWidth - $(".image_sircle").outerWidth() ) / 2 + imgLeft
 		curcle.css('left', curcleLeft);
 
-		var  elPosition = curcle.offset().left + (curcle.outerWidth() / 2) - halfImageWidth ;
+		var  elPosition = curcle.offset().left + (curcle.outerWidth() / 2) - offsetLeft;
 		elPosition = Math.abs(Math.round(elPosition));
 		
 		var  dist = pathLen * elPosition / maxWidth;
@@ -16785,16 +16805,38 @@ function placeBefore() {
 		helper.setAttribute("transform", "translate(" + pos.x + "," + pos.y + ")");
 
 		curcle.css('top', (helper.getBoundingClientRect().top - curcle.offset().top + $(window).scrollTop() - (curcle.outerWidth() / 2) )+'px');
+
+		var hw = 0;
 		
 		if($(this).parent().parent().hasClass('last_part')){
 			line.css('top', (helper.getBoundingClientRect().top - line.offset().top + $(window).scrollTop() )+'px');
-			line.css('height', ( imgTop - curcle.offset().top )+'px');
+			hw = imgTop - curcle.offset().top;
+			year.css({
+				height:  $(this).children('img:first').height()+'px',
+				left: ( imageWidth - $(".image_line").width() ) / 2 + imgLeft,
+				width: imageWidth / 2
+			})
 		}else{
-			line.css('height', (helper.getBoundingClientRect().top - line.offset().top + $(window).scrollTop() )+'px');
+			hw = helper.getBoundingClientRect().top - line.offset().top + $(window).scrollTop();
+			year.css({
+				height:  (hw - $(this).children('img:first').height() - curcle.outerHeight() / 2)+'px',
+				top: $(this).children('img:first').height()+'px',
+				left: ( imageWidth - $(".image_line").width() ) / 2 + imgLeft,
+				width: imageWidth / 2
+			})
 		}
+		line.css('height', hw+'px');
 	})
-
+	$("#slide-left").css('display', 'none');
+	if(isMobile()){
+		$('#road_info').css({ 'width': '100vw', 'overflow-x': 'scroll'});
+		$('.left-right-btn').css('display', 'none');
+	}
 }
+
+/*$('#road_info').on('scroll', function(e) {
+	e.preventDefault();
+})*/
 
 function calcChildHeight(el) {
 	var totalHeight = 0;
@@ -16844,14 +16886,20 @@ var scroll = 0;
 var scrollCount = $('body').width()/2;
 
 $('.left-right-btn').click(function() {
+	$("#slide-left").css('display', 'block');
+	$("#slide-right").css('display', 'block');
 	if($(this).attr('id') == 'slide-right' )
 		scroll -= scrollCount;
-	if(scroll < (($('.road_info_inner').width() - $(window).width() )* (-1)))
+	if(scroll < (($('.road_info_inner').width() - $(window).width() )* (-1))){
+		$("#slide-right").css('display', 'none');
 		scroll = ($('.road_info_inner').width() - $(window).width()) * (-1);
+	}
 	if($(this).attr('id') == 'slide-left' )
 		scroll += scrollCount;
-	if(scroll > 0)
+	if(scroll > 0){
+		$("#slide-left").css('display', 'none');
 		scroll = 0;
+	}
 	$('.road_info_inner').css('left', scroll+'px');
 })
 
@@ -16868,8 +16916,10 @@ $('.close_btn').click(function() {
 
 function positionCar(toTop = false)
 {
-	var  scrollY = (window.scrollY || window.pageYOffset) - $('#movingCarContainer').offset().top + window.innerHeight / 2;
-	var maxScrollY= movingCarContainer - ($('#lastContainer').height());
+	var  scrollY = (window.scrollY || window.pageYOffset) - $('#movingCarContainer').offset().top + (window.innerHeight / 2);
+	var maxScrollY = movingCarContainer;
+	if(window.innerHeight + (window.scrollY || window.pageYOffset) - $('#movingCarContainer').offset().top > movingCarContainer * 0.6)
+		scrollY = (window.scrollY || window.pageYOffset) - $('#movingCarContainer').offset().top + (window.innerHeight * (( window.innerHeight + (window.scrollY || window.pageYOffset) - $('#movingCarContainer').offset().top) / movingCarContainer ));
 	var path = document.getElementById("car_path");
 	var pathLen = path.getTotalLength();
 	if(scrollY > maxScrollY)

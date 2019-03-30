@@ -8,17 +8,38 @@
 	src: url(../fonts/PromtImperial.ttf);
 }
 
+@font-face {
+	font-family: Lato;
+	src: url(../fonts/9625.ttf);
+}
+
 $gray_color: #7b7b7b;
 $green_color: #1c916a;
 $orange_color: #ff4e00;
 $gray_color_h1: #606060;
 $font: 'PromtImperial';
+$lato: 'Lato';
 $fontBold: 'PromtImperialBold';
 $road_info_height: 100%;
 $margin: 15vh;
 $margin_h1: 7vh;
 $medium_margin_h1: 10vh;
 $medium_margin: 20vh;
+
+.info_container_first{
+    margin: 0 40px 10px 0;
+}
+
+.info_container_first h1{
+	font-size: 36px;
+    color: white;
+    background-color: $orange_color !important;
+    padding: 0 10px;
+}
+
+.year_container{
+	text-align: right;
+}
 
 body *{
 	//font-family: $font;
@@ -213,7 +234,7 @@ header{
 	display: -webkit-inline-flex;
 	flex-direction: column;
 	height: calc(90vh - 100px);
-	transition: left ease .2s;
+	transition: left ease .5s;
 	left: 0;
 }
 
@@ -227,15 +248,24 @@ header{
 }
 
 .image_container .image_line {
-    border: 1px solid $orange_color;
+    border-left: 1px solid #c4c4c4;
     height: 0px;
     top: 0px;
     position: absolute;
     z-index: -1;
 }
 
+.year_container{
+	font-size: 36px;
+	position: absolute;
+}
+
+.last_part .year_container{
+	bottom: 60px;
+}
+
 .image_container .image_sircle{
-    border: 5px solid $orange_color;
+    border: 2px solid #c4c4c4;
     width: 30px;
     height: 30px;
     border-radius: 30px;
@@ -295,7 +325,7 @@ header{
 	padding: 5px;
     margin-bottom: 5px;
     color: white;
-    background-color: $orange_color;
+    background-color: #c4c4c4;
     text-transform: uppercase;
     display: inline-block;
 }
@@ -573,7 +603,7 @@ footer img{
 	height: 100vh;
 	width: 100vw;
 	float: left;
-	transition: all ease .2s;
+	transition: all ease .5s;
 }
 .road_row{
 	height: calc(100vh - 80px);
@@ -601,6 +631,40 @@ footer img{
 .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 0rem;
     padding-left: 0rem; 
+}
+
+@media (min-width: 2000px){
+	.road_container {
+	    height: 60vh;
+	    margin-top: 20vh;
+	}
+	.road_info_inner {
+	    height: 60vh;
+	    margin-top: 20vh;
+	}
+	.h1_container {
+	    margin-bottom: 4vh;
+	}
+	#progress {
+	    margin-bottom: 8vh;
+	}
+
+	.close_btn {
+	    top: calc(115vh);
+	}
+	#roads .road{
+		margin-top: calc(30vh - 33px );
+	}
+	.road_hover h1 {
+	    margin-top: calc(15vh - 33px);
+	    padding-bottom: 4vh;
+	}
+	.road_hover p {
+	    margin: 4vh 0;
+	}
+	.road_hover button {
+	    margin-top: 5vh;
+	}
 }
 
 @media (min-width: 1200px){
@@ -670,9 +734,22 @@ footer img{
 	.container ul li {
 	    font-size: 12px;
 	}
+	.imgTextContainer:nth-child(5) {
+	    margin-top: 0px;
+	}
+	.imgTextContainer:nth-child(10) {
+	    margin-top: 0px;
+	}
+	.imgTextContainer:nth-child(11) {
+	    margin-top: 0px;
+	}
 }
 
 @media (max-width: 992px){
+	.container ul li .nav-link {
+	    font-size: 1rem;
+	    padding: .25rem 1.5rem;
+	}
 	.container {
 	    max-width: 90%;
 	}
@@ -680,6 +757,9 @@ footer img{
 	.container ul li{
 		text-align: left;
 		border-right: none;
+	}
+	.year_container {
+	    font-size: 25px;
 	}
 	.navbar img{
 		height: 40px !important;
@@ -746,39 +826,6 @@ footer img{
 	}
 }
 
-@media (min-width: 2000px){
-	.road_container {
-	    height: 60vh;
-	    margin-top: 20vh;
-	}
-	.road_info_inner {
-	    height: 60vh;
-	    margin-top: 20vh;
-	}
-	.h1_container {
-	    margin-bottom: 4vh;
-	}
-	#progress {
-	    margin-bottom: 8vh;
-	}
-
-	.close_btn {
-	    top: calc(115vh);
-	}
-	#roads .road{
-		margin-top: calc(30vh - 33px );
-	}
-	.road_hover h1 {
-	    margin-top: calc(15vh - 33px);
-	    padding-bottom: 4vh;
-	}
-	.road_hover p {
-	    margin: 4vh 0;
-	}
-	.road_hover button {
-	    margin-top: 5vh;
-	}
-}
 
 @media (max-width: 750px){
 	.road{
@@ -817,8 +864,8 @@ footer img{
 	.st1_map1{fill:none;stroke:#BBBCBE;stroke-miterlimit:3.8640001;}
 	.st1_map2{fill:none;stroke:#95BECB;stroke-width:0.5;stroke-miterlimit:3.8640001;}
 	.st1_map3{fill:#87898C;}
-	.st1_map4{font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";}
-	.st1_map5{font-size:10.0767403px;}
+	.st1_map4{font-family: $lato;}
+	.st1_map5{font-size:9px;}
 	.st1_map6{fill:none;stroke:#8AB3BB;stroke-width:0.5;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	.st1_map7{fill:#CEE9FC;stroke:#8AB3BB;stroke-width:0.5;stroke-linejoin:round;stroke-miterlimit:3.8640001;}
 	.st1_map8{clip-path:url(#SVGID_4_);fill-rule:evenodd;clip-rule:evenodd;fill:#FFFFFF;}
@@ -960,7 +1007,7 @@ footer img{
 	.st1_map01{fill:none;}
 	.st1_map02{fill:#363636;}
 	.st1_map03{font-size:13px;}
-	.st1_map04{font-family:'Arial-ItalicMT';}
+	.st1_map04{font-family:$lato;}
 	.st1_map05{font-size:16px;}
 	.st1_map06{fill-rule:evenodd;clip-rule:evenodd;fill:#A1CAC1;}
 	.st1_map07{fill-rule:evenodd;clip-rule:evenodd;fill:#D15845;}
@@ -993,6 +1040,7 @@ footer img{
     	position: absolute;
     	top: calc(150vh - 80px + 2vh);
     	background-color: white;
+    	border-radius: 1.2vh;
     	cursor: pointer;
     	z-index: 10;
     	opacity: 0;
