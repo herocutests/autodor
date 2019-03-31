@@ -16708,8 +16708,11 @@ function isMobile(){
 		return isMobile;
 	}
 
+	var viewPort = ($(window).width() < $(window).height()) ? "322.125228713495 150.6913600213913 841.6875918894162 444.8027047619049" : "5 10 1616.2434082 854.7439575";
+
+
 	var opts = {
-		limits: ($(window).width() < $(window).height()) ? "457.51746375451853 222.24146118757216 570.9031218073692 301.70250242954324" : "5 10 1616.2434082 854.7439575",
+		limits: viewPort,
 		eventMagnet: document.getElementById('map'),
 		zoom : {
 			events: {
@@ -16722,6 +16725,10 @@ function isMobile(){
                 drag: ( isMobile() ) ? false : true
             }
         }
+	}
+
+	if(isMobile()){
+		opts.initialViewBox = viewPort;
 	}
 
 	var instance = new SVGPanZoom(document.getElementById('mapSVG'), opts);
