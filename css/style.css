@@ -649,9 +649,6 @@ footer img {
 
   .h1_container h1 {
     font-size: 30px; } }
-.st0_zoom {
-  fill: #DA6E5B; }
-
 .st1_zoom {
   fill: none;
   stroke: #FFFFFF;
@@ -674,7 +671,7 @@ footer img {
   stroke-miterlimit: 10; }
 
 .st0_zoom {
-  fill: #ff4e00; }
+  fill: #3e87f6; }
 
 .st1_zoom {
   fill: none;
@@ -686,7 +683,7 @@ footer img {
 
 .st2_zoom {
   clip-path: url(#SVGID_2_222);
-  fill: #ff4e00; }
+  fill: #3e87f6; }
 
 .st3_zoom {
   clip-path: url(#SVGID_2_222);
@@ -1452,22 +1449,22 @@ footer img {
   cursor: pointer; }
 
 .st0_left {
-  fill: #ff4e00; }
+  fill: #3e87f6; }
 
 .st1_left {
   fill: none;
-  stroke: #ff4e00;
+  stroke: #3e87f6;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10; }
 
 .st0_right {
-  fill: #ff4e00; }
+  fill: #3e87f6; }
 
 .st1_right {
   fill: none;
-  stroke: #ff4e00;
+  stroke: #3e87f6;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
