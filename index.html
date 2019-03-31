@@ -16645,20 +16645,24 @@ $('#movingCarContainer .container .imgTextContainer').last().attr('id', 'lastCon
 function createRoad(road){
 	let mark = '';
 	$.each(road, function(ix, el){
-  		mark += '<div class="info_container">' +
+  		mark += getMark(el);
+	});
+	return mark;
+}
+
+function getMark(el){
+return '<div class="info_container">' +
 					'<div class="image_container">' +
 						'<div class="image_line"></div>' +
 						'<div class="year_container"><span>'+el.year+'</span></div>' +
 						'<img src="img/'+el.img+'" alt="">' +
 						'<div class="image_sircle"></div>' +
 					'</div>' +
-					'<div class="info_text_container">';
-		mark += (el.title != '') ? '<h1>'+el.title+'</h1>' : '';
-		mark +=  '<p>'+el.text+'</p>' +
+					'<div class="info_text_container">'+
+						((el.title != '') ? '<h1>'+el.title+'</h1>' : '')+
+						'<p>'+el.text+'</p>' +
 					'</div>' +
 				'</div>';
-	});
-	return mark;
 }
 
 function firstTextMark(el) {
@@ -16673,8 +16677,27 @@ return mark + '<p>'+el.p+'</p>' +
 		'</div>';
 }
 
-$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createRoad(contents.road_1.top_part));
-$('.road_info_inner .last_part').html(createRoad(contents.road_1.bottom_part));
+function createSingleRoad(el) {
+	var bottomCount = Object.keys(contents.road_1.bottom_part).length;
+	var topCount = Object.keys(contents.road_1.top_part).length;
+	var i = 1;
+	var j = 1;
+	let mark = '';
+	do {
+		mark += ((i <= bottomCount) ? getMark(el.bottom_part[i]) : '') + ((j <= topCount) ? getMark(el.top_part[j]) : '');
+		i++;
+		j++;
+	} while (i <= bottomCount && j <= topCount);
+	return mark;
+}
+
+if(!isMobile()){
+	$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createRoad(contents.road_1.top_part));
+	$('.road_info_inner .last_part').html(createRoad(contents.road_1.bottom_part));
+}else{
+	$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createSingleRoad(contents.road_1));
+}
+
 
 function isMobile(){
 		var isMobile = false; 
@@ -16686,8 +16709,7 @@ function isMobile(){
 	}
 
 	var opts = {
-
-		limits: "5 10 1616.2434082 854.7439575",
+		limits: ($(window).width() < $(window).height()) ? "457.51746375451853 222.24146118757216 570.9031218073692 301.70250242954324" : "5 10 1616.2434082 854.7439575",
 		eventMagnet: document.getElementById('map'),
 		zoom : {
 			events: {
@@ -16767,11 +16789,17 @@ function openRoadInfo() {
 
 function calcWidth() {
 	$('#road_info *').removeAttr('style');
+	if(isMobile()){
+		$('.first_part').css({ 'height': '70%', 'padding-right': '60px'});
+		$('.svg_path_container').css({ 'height': '30%'});
+		$('.last_part').css({ 'height': '0%', 'display': 'none'});
+	}
 	$(".info_text_container").each(function(i) {
 		$(this).removeAttr('style');
 		var height = calcChildHeight($(this)) - ($('.info_text_container h1').outerHeight() / 2);
 		var S = height * $(this).width();
-		$(this).width( (S / $('.info_container img').height() ) +'px');
+		var del = isMobile() ? $('.road_info_inner').height() * .7 : $('.info_container img').height();
+		$(this).width( (S / del ) +'px');
 	})
 
 	placeBefore();
@@ -16784,8 +16812,11 @@ function calcWidth() {
 function placeBefore() {
 	var imageWidth = $('.image_container img').width();
 	var marginLeft = $('.info_container_second').offset().left + ($('.info_container_second').width() / 2);
+	if(isMobile())
+		marginLeft = $('.image_container img').offset().left + ($('.image_container img').width() / 2);
 	$('.svg_path_container').css('margin-left', (marginLeft)+'px' );
-	$('.last_part').css('margin-left', (marginLeft - (imageWidth / 2))+'px');
+	if(!isMobile())
+		$('.last_part').css('margin-left', (marginLeft - (imageWidth / 2))+'px');
 	var offsetLeft = $('#m1_path_svg').offset().left;
 
 	
@@ -16796,7 +16827,6 @@ function placeBefore() {
 	var helper = document.getElementById("helper");
 	helper.removeAttribute("transform");
 	
-
 	$('.image_container').each(function(i) {
 		if($(this).hasClass('info_container_second'))
 			return;
