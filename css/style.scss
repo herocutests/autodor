@@ -25,6 +25,7 @@ $margin: 15vh;
 $margin_h1: 7vh;
 $medium_margin_h1: 10vh;
 $medium_margin: 20vh;
+$blue_color: #3e87f6;
 
 .info_container_first{
     margin: 0 40px 10px 0;
@@ -141,7 +142,7 @@ header{
 
 #roads .road{
 	height: 67px;
-    border: 1px solid $green_color;
+    border: 1px solid $blue_color;
     background-color: white;
     border-radius: 15px;
     margin: 0 10px;
@@ -191,7 +192,7 @@ header{
 }
 
 #roads .road:hover .roadText{
-	background-color: $orange_color;
+	background-color: $blue_color;
 }
 
 #roads .opennedRoad{
@@ -199,12 +200,12 @@ header{
 }
 
 #roads .opennedRoad .roadText{
-	background-color: $orange_color !important;
+	background-color: $blue_color !important;
 }
 
 #roads .road .roadText{
 	border-radius: 10px;
-	background-color: $green_color;
+	background-color: $blue_color;
 	height: 100%;
 	color: white;
 	font-size: 35px;
@@ -454,124 +455,79 @@ header{
     font-size: 36px;
 }
 
-.progress-col-1 span {
-    color: $gray_color_h1;
+.progress-container .setLineHeight{
+	color: $orange_color;
+	font-weight: 800;
 }
 
-.progress-col-1 p {
-    background-color: $orange_color;
-    color: white;
-    padding: 0 6px;
-    display: inline-block;
-    margin-bottom: 5px;
+.progress-container .setLineHeight span{
+	color: #212529;
 }
 
-.progress-col-2 span {
-    color: $gray_color_h1;
-    text-align: center;
-}
-
-.progress-col-2 .p_container_progress{
-    width: 172px;
-    float: right;
-    margin-top: -10px;
-    z-index: 20;
-    position: relative;
-    margin-bottom: 35px;
-}
-
-.progress-col-2 p {
-    background-color: $orange_color;
-    color: white;
-    padding: 0 6px;
-    margin-bottom: 5px;
-}
-
-.progress-col-2 p:nth-of-type(1) {
-	width: 31px;
-    float: right;
-}
-
-.progress-col-2 p:nth-of-type(2) {
-	clear: both;
-}
-
-.progress-col-3 span {
-    color: white;
-}
-
-.progress-col-3 .span {
-    color: white;
-    background-color: $orange_color;
-    padding: 0 20px;
-    width: calc(100% - 118px);
-    float: left;
-}
-
-.progress-col-3 .p_container_progress{
-	width: 118px;
-    float: right;
-    z-index: 20;
-    position: relative;
-}
-
-.progress-col-3 p {
-    color: $gray_color_h1;
-    padding: 0 6px;
-}
-
-.progress-col-4 .span{
-	width: calc( 100% - 155px);
-	padding: 0 20px;
-    float: left;
-    background-color: $gray_color_h1;
-}
-
-.progress-col-4 span {
-    color: white;
-}
-
-.progress-col-4 h2{
-	float: left;
-    width: 155px;
-    padding-left: 10px;
-    font-size: 68px;
-    margin-top: -34px;
-    color: $gray_color_h1;
-}
-
-.progress-col-4 p{
-	float: left;
-    width: 145px;
-    padding-left: 10px;
-    color: $gray_color_h1;
-    margin-top: -5px;
-}
-
-.progress-col-5 span {
-    color: $orange_color;
-    padding: 0 20px;
+.progress-container .col-6 .setLineHeight{
+	font-size: 58px;
+	display: inline-block;
+    width: 100%;
     text-align: right;
 }
 
-.progress-col-5 p {
-    background-color: $gray_color_h1;
-    color: white;
-    padding: 0 6px;
-    margin-bottom: 5px;
+.progress-container .col-6 .setLineHeight span{
+	font-size: 17px;
+}
+
+.progress-container .col-6 .setLineHeight p{
+	font-size: 17px;
+    width: 60px;
     display: inline-block;
+    color: #212529;
+    text-align: right;
 }
 
-.progress-col-5 .col-6:nth-of-type(1) p{
-	background-color: $orange_color;
-    color: white;
-    padding: 0 6px;
-    float: right;
-    margin-top: 29px;
+.progress-container .col-6 p{
+    text-align: right;
+    margin-top: -15px;
+    line-height: 19px;
 }
 
-.progress-col-5 .col-6:nth-of-type(2){
-	margin-left: -13px;
+.setLineHeightLittle{
+	text-align: right;
+	color: $orange_color;
+	font-size: 35px;
+	margin-top: 10px;
+	font-weight: 800;
+}
+.progress-container .col-6 .setLineHeightLittle p{
+	font-size: 15px;
+    width: 45px;
+    display: inline-block;
+    color: #212529;
+    text-align: right;
+}
+
+.progress_simpleText {
+	font-weight: normal;
+    width: 60px;
+    margin-right: 10px;
+}
+
+.progress-container .col-6 .invest{
+	margin-top: 0;
+}
+
+.progress-container .col-10 .setLineHeight{
+	font-size: 88px;
+}
+
+.progress-container .col-10 .setLineHeight span{
+	font-size: 45px;
+}
+
+.progress-container .col-6 .setLineHeightLast p{
+	width: 83px;
+}
+
+.secondProgressRow{
+	margin-top: 40px
 }
 
 footer{
@@ -593,6 +549,7 @@ footer img{
 
 .footer_text_left{
 	margin-left: 30px;
+	margin-top: -3px;
 }
 
 .footer_text_right{
@@ -1021,7 +978,7 @@ footer img{
 		.st1_map13{clip-path:url(#SVGID_4_);fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:$orange_color;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;}
 	.st1_map14{clip-path:url(#SVGID_2_);fill:none;stroke:#000000;stroke-miterlimit:10;}
 	.st1_map15{clip-path:url(#SVGID_2_);fill:none;stroke:#C7C7C9;stroke-linejoin:round;}
-	.st1_map16{fill:#52A67A;}
+	.st1_map16{fill:$blue_color}
 	.st1_map17{display:none;}
 
 	.st1_map11:hover{stroke-width:3; cursor: pointer;}
@@ -1034,6 +991,13 @@ footer img{
 
 	.st0_right{fill:$orange_color;}
 	.st1_right{fill:none;stroke:$orange_color;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+
+.st_map_117{fill:none;stroke:#5F5F5F;stroke-width:2;stroke-miterlimit:10;}
+	.st_map_118{fill:none;stroke:#5F5F5F;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:4.1413641,4.1413641;}
+	.st_map_119{fill:none;stroke:#5F5F5F;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:3.1274192,3.1274192;}
+	.st_map_120{fill:none;stroke:#5F5F5F;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:3.8409932,3.8409932;}
+	.st_map_121{fill:none;stroke:#5F5F5F;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:3.7524977,3.7524977;}
+	.st_map_122{fill:none;stroke:#5F5F5F;stroke-width:2;stroke-miterlimit:10;stroke-dasharray:3.5916438,3.5916438;}
 
 	.left-right-btn{
 		width: 4vh;
