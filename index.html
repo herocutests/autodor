@@ -102,7 +102,7 @@
 		</div>
 
 <svg version="1.1" id="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="165.82613699776778 68.09271240234375 1154.2857142857144 610" style="enable-background:new 165.82613699776778 68.09271240234375 1154.2857142857144 610;" xml:space="preserve">
+	 viewBox="504.49200439453125 87.4285670689174 1323.922816685268 476.42857142857144" xml:space="preserve" style='height: 100%;'>
 <symbol  id="Settlement" viewBox="-4.5000401 -4.4998598 9 9">
 	<path class="st0_map" d="M4.0908699,0.000138c0-2.2593482-1.8315599-4.0909076-4.09091-4.0909076S-4.09095-2.2592101-4.09095,0.000138
 		c0,2.259352,1.8315599,4.0909123,4.09091,4.0909123S4.0908699,2.25949,4.0908699,0.000138z"/>
@@ -16725,11 +16725,15 @@ function isMobile(){
 		return isMobile;
 	}
 
-	var viewPort = ($(window).width() < $(window).height()) ? "322.125228713495 150.6913600213913 841.6875918894162 444.8027047619049" : "5 10 1616.2434082 854.7439575";
+	//var viewPort = '0 0 1616.2434082 854.7439575';
+	//'504.49200439453125 87.4285670689174 1323.922816685268 476.42857142857144';
+	//var viewPort = ($('#mapSVG').width() * 0.4)+' '+0+' '+($(window).width()+ $('#mapSVG').width() * 0.4) +' '+($(window).height());
+	var limit = '0 0 1616.2434082 854.7439575';
 
+	//$('#mapSVG').attr('viewBox', viewPort);
 
 	var opts = {
-		limits: viewPort,
+		limits: limit,
 		eventMagnet: document.getElementById('map'),
 		zoom : {
 			events: {
@@ -16744,9 +16748,7 @@ function isMobile(){
         }
 	}
 
-	if(isMobile()){
-		opts.initialViewBox = viewPort;
-	}
+
 
 	var instance = new SVGPanZoom(document.getElementById('mapSVG'), opts);
 
@@ -17047,6 +17049,8 @@ function positionCar(toTop = false)
 	}
 
 	window.onscroll = function(e) {
+		if($('#topMenu').hasClass('show'))
+			$('.navbar-toggler').click()
 		if(window.pageYOffset >= $('#movingCarContainer').offset().top - window.innerHeight / 2 - 50 )
 			positionCar(this.oldScroll > this.scrollY);
 		this.oldScroll = this.scrollY;
