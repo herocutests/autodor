@@ -102,7 +102,7 @@
 		</div>
 
 <svg version="1.1" id="mapSVG" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="504.49200439453125 87.4285670689174 1323.922816685268 476.42857142857144" xml:space="preserve" style='height: 100%;'>
+	 viewBox="0 0 1616.2434082 854.7439575" xml:space="preserve" style='height: 100%;'>
 <symbol  id="Settlement" viewBox="-4.5000401 -4.4998598 9 9">
 	<path class="st0_map" d="M4.0908699,0.000138c0-2.2593482-1.8315599-4.0909076-4.09091-4.0909076S-4.09095-2.2592101-4.09095,0.000138
 		c0,2.259352,1.8315599,4.0909123,4.09091,4.0909123S4.0908699,2.25949,4.0908699,0.000138z"/>
@@ -16708,11 +16708,11 @@ function createSingleRoad(el) {
 	return mark;
 }
 
-if(!isMobile()){
+if(isMobile() || $(window).width() < $(window).height()){
+	$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createSingleRoad(contents.road_1));
+}else{
 	$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createRoad(contents.road_1.top_part));
 	$('.road_info_inner .last_part').html(createRoad(contents.road_1.bottom_part));
-}else{
-	$('.road_info_inner .first_part').first().html(firstTextMark(contents.road_1)+ createSingleRoad(contents.road_1));
 }
 
 
@@ -16725,12 +16725,31 @@ function isMobile(){
 		return isMobile;
 	}
 
-	//var viewPort = '0 0 1616.2434082 854.7439575';
-	//'504.49200439453125 87.4285670689174 1323.922816685268 476.42857142857144';
-	//var viewPort = ($('#mapSVG').width() * 0.4)+' '+0+' '+($(window).width()+ $('#mapSVG').width() * 0.4) +' '+($(window).height());
 	var limit = '0 0 1616.2434082 854.7439575';
 
-	//$('#mapSVG').attr('viewBox', viewPort);
+	var xSVG = 0, ySVG = 0, xwSVG = 0, yhSVG = 0, ww = $(window).width(), wh = $(window).height();
+
+	if(ww >= wh){
+		xwSVG = 1616.2434082;
+		ySVG =  340 - xwSVG * wh / ww / 2;
+		yhSVG = 340 + xwSVG * wh / ww / 2;
+	} else{
+		yhSVG = 854.7439575;
+		xSVG =  700 - yhSVG * ww / wh / 2;
+		xwSVG = 700 + yhSVG * ww / wh / 2;
+	}
+
+	if(xSVG < 0){
+		xwSVG += xSVG * (-1);
+		xSVG = 0;
+	}
+
+	if(ySVG < -50){
+		yhSVG += (ySVG + 50) * (-1);
+		ySVG = -50;
+	}
+
+	$('#mapSVG').attr('viewBox', xSVG+' '+ySVG+' '+xwSVG+' '+yhSVG);
 
 	var opts = {
 		limits: limit,
@@ -16774,16 +16793,18 @@ $(window).on('load', function () {
 	setTimeout(function() {
 		$("#main_block").remove();
 		setTimeout(function() {
-			resize();
+			resiveSVG();
 		}, 1000)
 	}, 4000)
 })
+
+var rName = 0;
 
 $('.road_container, .dropdown-item, .svgPath').click(function() {
 	scrollTo("#road_info");
 	$('#roads').css('margin-left', '-100vw');
 	$('.road_info_inner').css('left', 0);
-	let rName = $(this).attr('roadName') || $(this).attr('roadname');
+	rName = $(this).attr('roadName') || $(this).attr('roadname');
 	if($('.opennedRoad').length > 0){
 		if(rName == $('.opennedRoad').attr('roadName')){
 			$('.close_btn').click();
@@ -16814,8 +16835,10 @@ function openRoadInfo() {
 }
 
 function calcWidth() {
+	if(rName == 0)
+		return;
 	$('#road_info *').removeAttr('style');
-	if(isMobile()){
+	if(isMobile() || $(window).width() < $(window).height()){
 		$('.first_part').css({ 'height': '70%', 'padding-right': '60px'});
 		$('.svg_path_container').css({ 'height': '30%'});
 		$('.last_part').css({ 'height': '0%', 'display': 'none'});
@@ -16838,7 +16861,7 @@ function calcWidth() {
 function placeBefore() {
 	var imageWidth = $('.image_container img').width();
 	var marginLeft = $('.info_container_second').offset().left + ($('.info_container_second').width() / 2);
-	if(isMobile())
+	if(isMobile() || $(window).width() < $(window).height())
 		marginLeft = $('.image_container img').offset().left + ($('.image_container img').width() / 2);
 	$('.svg_path_container').css('margin-left', (marginLeft)+'px' );
 	if(!isMobile())
@@ -16901,15 +16924,11 @@ function placeBefore() {
 		line.css('height', hw+'px');
 	})
 	$("#slide-left").css('display', 'none');
-	if(isMobile()){
+	if(isMobile() || $(window).width() < $(window).height()){
 		$('#road_info').css({ 'width': '100vw', 'overflow-x': 'scroll'});
 		$('.left-right-btn').css('display', 'none');
 	}
 }
-
-/*$('#road_info').on('scroll', function(e) {
-	e.preventDefault();
-})*/
 
 function calcChildHeight(el) {
 	var totalHeight = 0;
@@ -16940,19 +16959,16 @@ function resiveSVG(){
 
 var movingCarContainer = 0;
 
-
-function resize() {
-	//$('.col-4, .col-6').textfill({widthOnly: true, maxFontPixels: 300}); 
-	//$('.span').textfill({widthOnly: true, maxFontPixels: 300}); 
-	/*$('.setLineHeight').each(function() {
-		$(this).css('line-height', (parseInt($(this).css('font-size')) / 2 + 8) + 'px');
-	})*/
-	resiveSVG();
+function hideBtn() {
+	if(rName != 0)
+		return;
+	$('.close_btn').css('right', '1000vw');
+	$('.left-right-btn').css('opacity', 0);
 }
 
 window.onresize = function(event) {
-	resize();
 	calcWidth();
+	resiveSVG();
 };
 
 var scroll = 0;
@@ -16977,11 +16993,11 @@ $('.left-right-btn').click(function() {
 })
 
 $('.close_btn').click(function() {
-	$('.close_btn').css('right', '100vw');
+	rName = 0;
+	hideBtn();
 	$('#roads').css('margin-left', '0vw');
 	$('.road').removeClass('opennedRoad');
 	$('.svgPath').removeClass('opennedRoadMap');
-	$('.left-right-btn').css('opacity', 0);
 	setTimeout(function() {
 		resiveSVG();
 	}, 1000)

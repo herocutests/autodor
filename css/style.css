@@ -214,21 +214,26 @@ header {
   background-color: white; }
 
 .info_container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
-  /*object-fit: contain;*/
   height: 100%; }
 
 .info_container img {
   height: 100%;
   margin-right: 40px;
-  margin-left: 60px;
-  /*object-fit: contain;
-  align-self: baseline;*/ }
+  margin-left: 60px; }
 
 .info_container:nth-of-type(1) img {
   margin-left: 0px; }
 
 .first_part {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   margin-top: 30px;
   height: 33%; }
@@ -277,10 +282,18 @@ header {
 .carTextContainer {
   justify-content: center;
   height: auto;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column; }
 
 .imgTextContainer {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   opacity: 0;
   transition: all ease 1s; }
@@ -392,7 +405,7 @@ header {
 
 .progress-container .col-6 .setLineHeightLittle p {
   font-size: 15px;
-  width: 45px;
+  width: 60px;
   display: inline-block;
   color: #212529;
   text-align: right; }
@@ -502,6 +515,9 @@ footer img {
 @media (min-width: 1200px) {
   .container {
     max-width: 1100px !important; } }
+@media (max-width: 1360px) {
+  .year_container {
+    font-size: 26px; } }
 @media (max-width: 1200px) {
   .navbar-brand img {
     height: 35px !important; }
@@ -662,6 +678,12 @@ footer img {
   .road_container {
     height: 25vh; }
 
+  .road_container:hover .road {
+    display: block; }
+
+  .road_container:hover .road_hover {
+    display: none; }
+
   #roads .road {
     margin: auto;
     margin-top: calc(9.5vh - 33px);
@@ -671,7 +693,7 @@ footer img {
     margin-bottom: 50px; }
 
   .progress-container .col-10 .setLineHeight {
-    font-size: 70px; }
+    font-size: 55px; }
 
   .h1_container {
     margin-bottom: 50px; }
@@ -739,16 +761,17 @@ footer img {
     flex: 0 0 80%;
     max-width: 80%;
     margin: auto;
-    margin-bottom: 40px; }
+    margin-bottom: 20px; }
 
   .mobileFullWidth .col-6 {
     -ms-flex: 0 0 80%;
     flex: 0 0 80%;
     max-width: 80%;
-    margin: auto; }
+    margin: auto;
+    margin-bottom: 20px; }
 
   .progress-container .col-6 .setLineHeight {
-    font-size: 65px; } }
+    font-size: 55px; } }
 @media (max-width: 510px) {
   .navbar img {
     height: 30px !important; } }
