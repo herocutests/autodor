@@ -16780,6 +16780,8 @@ function isMobile(){
 		instance.zoomOut(null, 0.4);
 	});
 
+var showContent = false;
+
 $(window).on('load', function () {
 	movingCarContainer = $('#movingCarContainer').height();
 	$.each($('.imgTextContainer'), function(ix, el){
@@ -16789,16 +16791,38 @@ $(window).on('load', function () {
 			$(this).css({'opacity': '1'});
 		}
 	})
+
+	setTimeout(function() {
+		resiveSVG();
+	}, 1000)
+
+	if(showContent == true)
+		return;
 	$("#main_block").css({'opacity': 0});
 	$("#page_content").css({'opacity': 1});
 
 	setTimeout(function() {
 		$("#main_block").remove();
-		setTimeout(function() {
-			resiveSVG();
-		}, 1000)
-	}, 4000)
+	}, 2000)
 })
+
+$('.close_banner_btn').click(function() {
+	setTimeout(function() {
+		resiveSVG();
+	}, 1000)
+	hideBanner();
+	showContent = true;
+})
+
+function hideBanner() {
+
+	$("#main_block").css({'opacity': 0});
+	$("#page_content").css({'opacity': 1});
+
+	setTimeout(function() {
+		$("#main_block").remove();
+	}, 2000)
+}
 
 var rName = 0;
 

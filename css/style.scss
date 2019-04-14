@@ -293,7 +293,8 @@ header{
 
 .close_banner_btn{
 	height: 4vh;
-    margin: 1vw 1vw 0 95vw;
+    margin: 1vw 1vw 0 0;
+    margin-left: calc(100% - 4vh - 1vw);
     cursor: pointer;
     position: absolute;
 }
@@ -527,7 +528,7 @@ header{
 }
 
 .progress-container .col-10 .setLineHeight{
-	font-size: 85px;
+	font-size: 80px;
 }
 
 .progress-container .col-10 .setLineHeight span{
@@ -934,7 +935,10 @@ footer img{
 	    margin-bottom: 20px;
 	}
 	.progress-container .col-6 .setLineHeight {
-	    font-size: 55px;
+	    font-size: 45px;
+	}
+	.secondProgressRow {
+	    margin-top: 0px;
 	}
 }
 
