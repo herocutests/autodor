@@ -291,6 +291,13 @@ header{
     margin-left: 60px;
 }
 
+.close_banner_btn{
+	height: 4vh;
+    margin: 1vw 1vw 0 95vw;
+    cursor: pointer;
+    position: absolute;
+}
+
 .info_container:nth-of-type(1) img{
 	margin-left: 0px;
 }

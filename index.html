@@ -20,7 +20,9 @@
 	<script src="js/fit.js"></script>
 </head>
 <body>
-	<section id="main_block" class="hide_banner"></section>
+	<section id="main_block" class="hide_banner">
+		<img src="img/close.svg" alt="" class="close_banner_btn">
+	</section>
 <!--
 	<div style="
     position: absolute;
@@ -16859,10 +16861,14 @@ function calcWidth() {
 }
 
 function placeBefore() {
+	if(isMobile() || $(window).width() < $(window).height()){
+		$('.info_container img').css({'height': 'auto', 'max-width': '90vw'});
+	}
 	var imageWidth = $('.image_container img').width();
 	var marginLeft = $('.info_container_second').offset().left + ($('.info_container_second').width() / 2);
-	if(isMobile() || $(window).width() < $(window).height())
+	if(isMobile() || $(window).width() < $(window).height()){
 		marginLeft = $('.image_container img').offset().left + ($('.image_container img').width() / 2);
+	}
 	$('.svg_path_container').css('margin-left', (marginLeft)+'px' );
 	if(!isMobile())
 		$('.last_part').css('margin-left', (marginLeft - (imageWidth / 2))+'px');
