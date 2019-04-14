@@ -438,6 +438,10 @@ function _classCallCheck(instance, Constructor) {
             }
             ;
 
+            this.setDrag = function(params) {
+                this.options.pan.events.drag = params;
+            };
+
             // Setter for ViewBox
             this.setViewBox = function(x, y, width, height, animationTime, callback) {
                 if (animationTime == null) {
@@ -686,6 +690,16 @@ function _classCallCheck(instance, Constructor) {
                     ;
 
                     handlers.pinchAndDrag = function(event) {
+                    	var domBody = window.document.body;
+                    	if(event.originalEvent.target.id != 'mapSVG'){
+                        	domBody.removeEventListener("mousemove", mouseMoveCallback, true);
+		                    domBody.removeEventListener("touchmove", mouseMoveCallback, { passive: false });
+		                    domBody.removeEventListener("mouseup", mouseUpCallback, true);
+		                    domBody.removeEventListener("touchend", mouseUpCallback, { passive: false });
+		                    domBody.removeEventListener("touchcancel", mouseUpCallback, { passive: false });
+		                    domBody.removeEventListener("mouseout", mouseUpCallback, true);
+                        	return;
+                        }
                         var _this3 = this;
 
                         if (!this.options.pan.events.drag || event.type === "mousedown" && event.which !== this.options.pan.events.dragMouseButton || dragStarted || scaleStarted) {
@@ -695,7 +709,6 @@ function _classCallCheck(instance, Constructor) {
                         event.preventDefault();
                         preventClick = false;
 
-                        var domBody = window.document.body;
                         var initialViewBox = $.extend({}, this.getViewBox());
 
                         var oldCursor = this.options.eventMagnet.css("cursor");
@@ -711,6 +724,7 @@ function _classCallCheck(instance, Constructor) {
                         }
 
                         var mouseMoveCallback = function mouseMoveCallback(event2) {
+                        	
                             var isTouch = /touch/i.test(event.type);
                             var checkDoubleTouch = isTouch && isDoubleTouch(event2);
 
@@ -747,17 +761,18 @@ function _classCallCheck(instance, Constructor) {
                         };
 
                         var mouseUpCallback = function mouseUpCallback(event2) {
+
                             if (event2.type === "mouseout" && event2.target !== event2.currentTarget || event2.type === "mouseup" && event2.which !== _this3.options.pan.events.dragMouseButton) {
                                 return;
                             }
 
                             event2.preventDefault();
                             domBody.removeEventListener("mousemove", mouseMoveCallback, true);
-                            domBody.removeEventListener("touchmove", mouseMoveCallback, true);
-                            domBody.removeEventListener("mouseup", mouseUpCallback, true);
-                            domBody.removeEventListener("touchend", mouseUpCallback, true);
-                            domBody.removeEventListener("touchcancel", mouseUpCallback, true);
-                            domBody.removeEventListener("mouseout", mouseUpCallback, true);
+	                        domBody.removeEventListener("touchmove", mouseMoveCallback, { passive: false });
+	                        domBody.removeEventListener("mouseup", mouseUpCallback, true);
+	                        domBody.removeEventListener("touchend", mouseUpCallback, { passive: false });
+	                        domBody.removeEventListener("touchcancel", mouseUpCallback, { passive: false });
+	                        domBody.removeEventListener("mouseout", mouseUpCallback, true);
 
                             if (_this3.options.pan.events.dragCursor != null) {
                                 _this3.options.eventMagnet.css("cursor", oldCursor);
@@ -769,10 +784,10 @@ function _classCallCheck(instance, Constructor) {
                         };
 
                         domBody.addEventListener("mousemove", mouseMoveCallback, true);
-                        domBody.addEventListener("touchmove", mouseMoveCallback, true);
+                        domBody.addEventListener("touchmove", mouseMoveCallback, { passive: false });
                         domBody.addEventListener("mouseup", mouseUpCallback, true);
-                        domBody.addEventListener("touchend", mouseUpCallback, true);
-                        domBody.addEventListener("touchcancel", mouseUpCallback, true);
+                        domBody.addEventListener("touchend", mouseUpCallback, { passive: false });
+                        domBody.addEventListener("touchcancel", mouseUpCallback, { passive: false });
                         domBody.addEventListener("mouseout", mouseUpCallback, true);
                     }
                     ;

@@ -814,27 +814,6 @@ footer img {
 
   footer {
     height: 120px; } }
-.st1_zoom {
-  fill: none;
-  stroke: #FFFFFF;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10; }
-
-.st2_zoom {
-  clip-path: url(#SVGID_2_);
-  fill: #DA6E5B; }
-
-.st3_zoom {
-  clip-path: url(#SVGID_4_);
-  fill: none;
-  stroke: #FFFFFF;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-miterlimit: 10; }
-
 .st0_zoom {
   fill: #3e87f6; }
 
@@ -847,17 +826,42 @@ footer img {
   stroke-miterlimit: 10; }
 
 .st2_zoom {
-  clip-path: url(#SVGID_2_222);
-  fill: #3e87f6; }
+  fill: white;
+  stroke: #3e87f6;
+  stroke-width: 2;
+  stroke-miterlimit: 10; }
 
 .st3_zoom {
-  clip-path: url(#SVGID_2_222);
+  fill: none;
+  stroke: #3e87f6;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round; }
+
+.st4_zoom {
+  clip-path: url(#SVGID_2_zoom);
+  fill: #3e87f6; }
+
+.st5_zoom {
+  clip-path: url(#SVGID_4_zoom);
   fill: none;
   stroke: #FFFFFF;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-miterlimit: 10; }
+
+#activateDrop {
+  display: none; }
+
+.activateDropClass .st2_zoom {
+  fill: #3e87f6; }
+
+.activateDropClass .st3_zoom {
+  stroke: white; }
+
+.activateDropClass .st0_zoom {
+  fill: white; }
 
 .st0_map {
   fill: #FFFFFF; }
