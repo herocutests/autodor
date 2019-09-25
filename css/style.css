@@ -266,7 +266,7 @@ header {
 
 .info_text_container {
   height: 100%;
-  /* min-width: 400px;*/ }
+}
 
 .close_btn {
   height: 4vh;
@@ -480,7 +480,8 @@ footer img {
   height: 100vh; }
 
 #road_info.openRoad {
-  float: left; }
+  float: left; 
+}
 
 #roadSectionInner {
   width: 1000000000px; }
