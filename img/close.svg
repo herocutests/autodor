@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 19.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Векторный_смарт-объект_xA0_Изображение_1_"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30 30"
-	 style="enable-background:new 0 0 30 30;" xml:space="preserve">
+<svg version="1.1"  class="close_banner_btn"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-464 266 30 30"
+	 style="enable-background:new -464 266 30 30;" xml:space="preserve">
 <style type="text/css">
-	.st0{fill:#ff4e00;}
-	.st1{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
+	.st0_close{fill:#FF4E00;}
+	.st1_close{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;}
 </style>
-<path class="st0" d="M8.833333,0h12.333333C26.0451813,0,30,3.954818,30,8.833333v12.333333
-	C30,26.0451813,26.0451813,30,21.166666,30H8.833333C3.954818,30,0,26.0451813,0,21.166666V8.833333
-	C0,3.954818,3.954818,0,8.833333,0z"/>
-<line class="st1" x1="11.3073311" y1="18.6926689" x2="18.6926689" y2="11.3073311"/>
-<line class="st1" x1="11.3073311" y1="11.3073311" x2="18.6926689" y2="18.6926689"/>
+<g class="close_banner_btn">
+<path class="st0_close" d="M-456.8,266h15.7c4,0,7.2,3.2,7.2,7.2v15.7c0,4-3.2,7.2-7.2,7.2h-15.7c-4,0-7.2-3.2-7.2-7.2v-15.7
+	C-464,269.2-460.8,266-456.8,266z">
+</path>
+<line class="st1_close" x1="-452.7" y1="284.7" x2="-445.3" y2="277.3"/>
+<line class="st1_close" x1="-452.7" y1="277.3" x2="-445.3" y2="284.7"/>
+</g>
 </svg>

@@ -79,7 +79,9 @@ header {
 .dropdown-menu .dropdown-item {
   margin-bottom: 10px;
   color: #7b7b7b;
-  white-space: normal; }
+  white-space: normal; 
+  cursor: pointer;
+}
 
 .dropdown-menu .dropdown-item:last-of-type {
   margin-bottom: 0px; }
@@ -92,7 +94,7 @@ header {
 #controls {
   position: absolute;
   z-index: 10;
-  bottom: calc( 46vh - 40px);
+  bottom: calc( (100vh - 8vh - 5px) / 2  - 80px);
   width: 5vh;
   right: 2vh; }
 
@@ -134,9 +136,16 @@ header {
   width: 80%;
   margin-top: 7vh;
   padding: 1vh 0;
-  background-color: transparent;
   border: 1px solid white;
-  color: white; }
+  color: white; 
+  background-color: #7d7d7d00;
+  transition: all ease .3s;
+  cursor: pointer;
+}
+
+.road_hover button:hover{
+  background-color: #7d7d7d57;
+}
 
 #roads .road:hover {
   border: 1px solid #ff4e00; }
@@ -816,7 +825,14 @@ footer img {
   footer {
     height: 120px; } }
 .st0_zoom {
-  fill: #3e87f6; }
+  fill: #3e87f6; 
+}
+
+
+#zoomout:hover .st0_zoom{
+	fill: #18468c;
+    cursor: pointer;
+}
 
 .st1_zoom {
   fill: none;
@@ -840,11 +856,14 @@ footer img {
   stroke-linejoin: round; }
 
 .st4_zoom {
-  clip-path: url(#SVGID_2_zoom);
   fill: #3e87f6; }
 
+#zoomin:hover .st4_zoom{
+	fill: #18468c;
+    cursor: pointer;
+}
+
 .st5_zoom {
-  clip-path: url(#SVGID_4_zoom);
   fill: none;
   stroke: #FFFFFF;
   stroke-width: 2;
