@@ -17253,16 +17253,20 @@ function openRoadInfo() {
 		$('.road_info_inner .first_part').first().html(firstTextMark(contents[roadAttrName])+ createRoad(contents[roadAttrName]['top_part']));
 		$('.road_info_inner .last_part').html(createRoad(contents[roadAttrName]['bottom_part']));
 	}
+
+	setTimeout(function() {
+		calcWidth();
+	}, 50);
+
 	var i = 0;
 
 	$('.image_container img').each(function () {
 	    var img = new Image();
 	    img.onload = function () {
 	        i++;
-	        if(i > 0) 
+	        if(i > $('.image_container img').length) 
 	            calcWidth();
 	    }
-	    img.src = $(this).attr('src');
 	});
 	
 	setTimeout(function() {
