@@ -17254,20 +17254,21 @@ function openRoadInfo() {
 		$('.road_info_inner .last_part').html(createRoad(contents[roadAttrName]['bottom_part']));
 	}
 
-	setTimeout(function() {
-		calcWidth();
-	}, 50);
-
 	var i = 0;
 
 	$('.image_container img').each(function () {
 	    var img = new Image();
 	    img.onload = function () {
 	        i++;
-	        if(i = $('.image_container img').length) 
+	        if(i == $('.image_container img').length) 
 	            calcWidth();
 	    }
+	    img.src = $(this).attr('src');
 	});
+
+	setTimeout(function() {
+		calcWidth();
+	}, 50);
 	
 	setTimeout(function() {
 		resiveSVG();
