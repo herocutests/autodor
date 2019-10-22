@@ -17253,10 +17253,17 @@ function openRoadInfo() {
 		$('.road_info_inner .first_part').first().html(firstTextMark(contents[roadAttrName])+ createRoad(contents[roadAttrName]['top_part']));
 		$('.road_info_inner .last_part').html(createRoad(contents[roadAttrName]['bottom_part']));
 	}
-	setTimeout(function() {
-		calcWidth();
-	}, 50);
-	
+	var i = 0;
+
+	$('.image_container img').each(function () {
+	    var img = new Image();
+	    img.onload = function () {
+	        i++;
+	        if(i == $('.image_container img').length) 
+	            calcWidth();
+	    }
+	    img.src = $(this).attr('src');
+	});
 	
 	setTimeout(function() {
 		resiveSVG();
@@ -17264,13 +17271,11 @@ function openRoadInfo() {
 }
 
 function calcWidth() {
-	console.log("calcWidth");
+
 	if(rName == 0)
 		return;
 	$('#road_info *').removeAttr('style');
-	console.log("remove style");
 	if(isMobile() || $(window).width() < $(window).height()){
-		console.log("mobile");
 		$('.first_part').css({ 'height': '70%', 'padding-right': '60px'});
 		$('.svg_path_container').css({ 'height': '30%'});
 		$('.last_part').css({ 'height': '0%', 'display': 'none'});
@@ -17291,7 +17296,6 @@ function calcWidth() {
 }
 
 function placeBefore() {
-	console.log("placeBefore");
 	if(isMobile() || $(window).width() < $(window).height()){
 		$('.info_container img').css({'height': 'auto', 'max-width': '90vw'});
 	}
@@ -17307,9 +17311,7 @@ function placeBefore() {
 
 	
 	var halfImageWidth = imageWidth / 2;
-	console.log("halfImageWidth "+halfImageWidth);
 	var maxWidth = $('#m1_path_svg').width();
-	console.log("maxWidth "+maxWidth);
 	var path = document.getElementById("m1_path");
 	var pathLen = path.getTotalLength();
 	var helper = document.getElementById("helper");
