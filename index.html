@@ -17259,7 +17259,7 @@ function openRoadInfo() {
 	    var img = new Image();
 	    img.onload = function () {
 	        i++;
-	        if(i == $('.image_container img').length) 
+	        if(i > 0) 
 	            calcWidth();
 	    }
 	    img.src = $(this).attr('src');
