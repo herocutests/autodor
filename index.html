@@ -17264,10 +17264,13 @@ function openRoadInfo() {
 }
 
 function calcWidth() {
+	console.log("calcWidth");
 	if(rName == 0)
 		return;
 	$('#road_info *').removeAttr('style');
+	console.log("remove style");
 	if(isMobile() || $(window).width() < $(window).height()){
+		console.log("mobile");
 		$('.first_part').css({ 'height': '70%', 'padding-right': '60px'});
 		$('.svg_path_container').css({ 'height': '30%'});
 		$('.last_part').css({ 'height': '0%', 'display': 'none'});
@@ -17288,6 +17291,7 @@ function calcWidth() {
 }
 
 function placeBefore() {
+	console.log("placeBefore");
 	if(isMobile() || $(window).width() < $(window).height()){
 		$('.info_container img').css({'height': 'auto', 'max-width': '90vw'});
 	}
@@ -17303,7 +17307,9 @@ function placeBefore() {
 
 	
 	var halfImageWidth = imageWidth / 2;
+	console.log("halfImageWidth "+halfImageWidth);
 	var maxWidth = $('#m1_path_svg').width();
+	console.log("maxWidth "+maxWidth);
 	var path = document.getElementById("m1_path");
 	var pathLen = path.getTotalLength();
 	var helper = document.getElementById("helper");
